@@ -1,0 +1,13 @@
+= simple_form_for @camp do |f|
+  = f.association :company, input_html: { class: "js-select"}
+  = f.input :name, label: "Название лагеря"
+  = f.input :url, label: "Сайт лагеря"
+  = f.input :facebook, label: "Группа в фб"
+  = f.input :vk, label: "Группа в ВК"
+  = f.input :incamp_url, label: "Страница на Incamp"
+  = f.input :ml_url, label: "Страница на mir-lagerey"
+  = f.input :dt_url, label: "Страница на deti-travel"
+  = f.input :inlearno_url, label: "Страница на Inlearno"
+  = f.input :bc_url, label: "Страница на best-camps"
+  = f.input :pd_url, label: "Страница на poehali-deti"
+  = f.submit

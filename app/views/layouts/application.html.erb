@@ -11,14 +11,15 @@
 
   <body>
     <%= render 'layouts/navigation' %>
-    <div class="containter" >
-      <% if notice %>
-        <p class="alert alert-success"><%= notice %></p>
+    <div class="container" >
+      <% if !flash.empty? %>
+        <div class="container">
+          <% flash.each do |message_type, message| %>
+            <div class="alert alert-<%= message_type %>"><%= message %></div>
+          <% end %>
+        </div>
       <% end %>
-      <% if alert %>
-        <p class="alert alert-danger"><%= alert %></p>
-      <% end %>
+      <%= yield %>
     </div>
-    <%= yield %>
   </body>
 </html>

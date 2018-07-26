@@ -1,0 +1,8 @@
+%h3
+  = company.name
+%p.font-weight-light
+  = company.entity
+%p.font-weight-bold
+  = link_to "Edit", edit_company_path(company)
+  = link_to "Delete", company_path(company), method: :delete
+

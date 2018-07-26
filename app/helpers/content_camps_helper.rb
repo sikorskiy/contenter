@@ -1,0 +1,2 @@
+module ContentCampsHelper
+end

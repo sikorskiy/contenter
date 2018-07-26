@@ -1,0 +1,2 @@
+class Seasonship < ApplicationRecord
+end

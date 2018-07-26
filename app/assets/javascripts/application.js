@@ -15,4 +15,6 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require select2
+//= require select
 //= require_tree .
