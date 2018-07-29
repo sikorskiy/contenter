@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+#
+
+%w[Православный Мусульманский Военно-патриотический Математический Футбольный].each do |name|
+  CampCategory.find_or_create_by(name: name)
+end

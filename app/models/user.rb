@@ -7,12 +7,12 @@ class User < ApplicationRecord
   attr_accessor :name
 
   belongs_to :user_role
+  has_many :camps
   before_validation :default_role
 
   def is_admin?
     user_role.name == "user"
   end
-
 
   #validates :quantity, presence: true, numericality: {greater_than: 0}
 

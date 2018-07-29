@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_29_083944) do
+ActiveRecord::Schema.define(version: 2018_07_29_093001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -127,10 +127,8 @@ ActiveRecord::Schema.define(version: 2018_07_29_083944) do
 
   create_table "geotags", force: :cascade do |t|
     t.string "name"
-    t.bigint "camp_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["camp_id"], name: "index_geotags_on_camp_id"
   end
 
   create_table "group_leaders", force: :cascade do |t|
@@ -176,6 +174,15 @@ ActiveRecord::Schema.define(version: 2018_07_29_083944) do
     t.index ["season_type_id"], name: "index_seasonships_on_season_type_id"
   end
 
+  create_table "taggizations", force: :cascade do |t|
+    t.bigint "camp_id"
+    t.bigint "geotag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["camp_id"], name: "index_taggizations_on_camp_id"
+    t.index ["geotag_id"], name: "index_taggizations_on_geotag_id"
+  end
+
   create_table "user_roles", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -202,4 +209,6 @@ ActiveRecord::Schema.define(version: 2018_07_29_083944) do
     t.index ["user_role_id"], name: "index_users_on_user_role_id"
   end
 
+  add_foreign_key "taggizations", "camps"
+  add_foreign_key "taggizations", "geotags"
 end

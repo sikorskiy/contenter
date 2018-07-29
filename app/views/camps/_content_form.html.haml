@@ -6,8 +6,8 @@
       .panel.panel-danger
         .panel-heading
           %h3.panel-title
-            Заполняется администратором
-        .panel-body
+            = link_to 'Заполняется администратором (показать/скрыть)', '#', id: 'hiding-link'
+        #admin-panel.panel-body{style: 'display: none;'}
           .form-group
             %label Название организации
             = text_field_tag :company_id, @camp.company.name, class: 'form-control', readonly: 'true'
@@ -85,6 +85,9 @@
           .form-group
             %label Долгота
             = f.text_field :longitude, class: 'form-control'
+          .form-group
+            %label Геотеги лагеря
+            = f.collection_select :geotag_ids, Geotag.all.order(:name), :id, :name, {}, {multiple: true, class: "js-select-new"}
           .form-group
             %label С какого возраста
             = f.text_field :starting_age, class: 'form-control'
