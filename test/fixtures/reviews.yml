@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  review_text: MyText
+  name: MyString
+  is_negative: false
+  review_role: 
+
+two:
+  review_text: MyText
+  name: MyString
+  is_negative: false
+  review_role: 

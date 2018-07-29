@@ -1,4 +1,0 @@
-= simple_form_for @content_camp do |f|
-  = f.association :camp, input_html: { class: "js-select"}
-  = table_hash(:content_camps).each {|key, value| f.input key, label: value}
-  = f.submit

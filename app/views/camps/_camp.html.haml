@@ -1,46 +1,16 @@
-%h3
+%h3.text-center
   = camp.name
-%p.font-weight-light{style: "margin: 0px; padding: 0px;"}
+%p.font-weight-light.no_margin
   %strong
-    Компания:
+    Организация:
   = camp.company.name
-%p.font-weight-light{style: "margin: 0px; padding: 0px;"}
-  %strong
-    Сайт лагеря:
-  = camp.url
-%p.font-weight-light{style: "margin: 0px; padding: 0px;"}
-  %strong
-    Группа в фб:
-  = camp.facebook
-%p.font-weight-light{style: "margin: 0px; padding: 0px;"}
-  %strong
-    Группа в ВК:
-  = camp.vk
-%p.font-weight-light{style: "margin: 0px; padding: 0px;"}
-  %strong
-    Страница на Инкэмп:
-  = camp.incamp_url
-%p.font-weight-light{style: "margin: 0px; padding: 0px;"}
-  %strong
-    Страница на Мире-лагерей:
-  = camp.ml_url
-%p.font-weight-light{style: "margin: 0px; padding: 0px;"}
-  %strong
-    Страница на Дети-тревел:
-  = camp.dt_url
-%p.font-weight-light{style: "margin: 0px; padding: 0px;"}
-  %strong
-    Страница на Инлерно:
-  = camp.inlearno_url
-%p.font-weight-light{style: "margin: 0px; padding: 0px;"}
-  %strong
-    Страница на Бест-кэмпс:
-  = camp.bc_url
-%p.font-weight-light{style: "margin: 0px; padding: 0px;"}
-  %strong
-    Страница на Поехали-дети:
-  = camp.pd_url
-%p.font-weight-light{style: "margin: 0px; padding: 0px;"}
+
+- camp_full_name_hash.each do |a, b|
+  %p.font-weight-light.no_margin
+    %strong
+      = b
+    = camp[a]
+
 %p.font-weight-bold
   = link_to "Edit", edit_camp_path(camp)
   -# = link_to "Delete", camp_path(camp), method: :delete

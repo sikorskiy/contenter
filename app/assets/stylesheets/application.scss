@@ -1,4 +1,11 @@
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "select2";
 @import "select2-bootstrap";
+
+
+.no_margin {
+  margin: 0;
+  padding: 0;
+}

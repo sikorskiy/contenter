@@ -1,0 +1,121 @@
+%h1.text-center
+  = @camp.name
+.row
+  .col-md-12
+    = form_for @camp do |f|
+      .panel.panel-danger
+        .panel-heading
+          %h3.panel-title
+            Заполняется администратором
+        .panel-body
+          .form-group
+            %label Название организации
+            = text_field_tag :company_id, @camp.company.name, class: 'form-control', readonly: 'true'
+          .form-group
+            %label Название лагеря
+            = f.text_field :name, class: 'form-control', readonly: 'true'
+          .form-group
+            %label Сайт лагеря
+            = f.text_field :url, class: 'form-control', readonly: 'true'
+          .form-group
+            %label Группа в фб
+            = f.text_field :facebook, class: 'form-control', readonly: 'true'
+          .form-group
+            %label Группа в ВК
+            = f.text_field :vk, class: 'form-control', readonly: 'true'
+          .form-group
+            %label Страница на Incamp
+            = f.text_field :incamp_url, class: 'form-control', readonly: 'true'
+          .form-group
+            %label Страница на mir-lagerey
+            = f.text_field :ml_url, class: 'form-control', readonly: 'true'
+          .form-group
+            %label Страница на deti-travel
+            = f.text_field :dt_url, class: 'form-control', readonly: 'true'
+          .form-group
+            %label Страница на Inlearno
+            = f.text_field :inlearno_url, class: 'form-control', readonly: 'true'
+          .form-group
+            %label Страница на bestcamps
+            = f.text_field :bc_url, class: 'form-control', readonly: 'true'
+          .form-group
+            %label Страница на poehali-deti
+            = f.text_field :pd_url, class: 'form-control', readonly: 'true'
+      .panel.panel-info
+        .panel-heading
+          %h3.panel-title
+            Заполняется Вами
+        .panel-body
+          .form-group
+            %label Наличие презентации о лагере
+            = f.check_box :presentation
+          .form-group
+            %label Анонс лагеря
+            = f.text_area :preview, class: 'form-control', rows: '20'
+          .form-group
+            %label Программа лагеря
+            = f.text_area :program, class: 'form-control', rows: '20'
+          .form-group
+            %label Распорядок дня
+            = f.text_area :schedule, class: 'form-control', rows: '20'
+          .form-group
+            %label Обучение
+            = f.text_area :study, class: 'form-control', rows: '20'
+          .form-group
+            %label Категория лагеря
+            = f.collection_select :camp_category_ids, CampCategory.all.order(:name), :id, :name, {}, {multiple: true, class: "js-select"}
+          .form-group
+            %label Размещение/территория
+            = f.text_area :accommodation, class: 'form-control', rows: '20'
+          .form-group
+            %label Питание
+            = f.text_area :meal, class: 'form-control', rows: '20'
+          .form-group
+            %label Медицина/безопасность
+            = f.text_area :security, class: 'form-control', rows: '20'
+          .form-group
+            %label Что входит в стоимость
+            = f.text_area :pricing, class: 'form-control', rows: '20'
+          .form-group
+            %label Адрес
+            = f.text_area :adds, class: 'form-control', rows: '2'
+          .form-group
+            %label Широта
+            = f.text_field :latitude, class: 'form-control'
+          .form-group
+            %label Долгота
+            = f.text_field :longitude, class: 'form-control'
+          .form-group
+            %label С какого возраста
+            = f.text_field :starting_age, class: 'form-control'
+          .form-group
+            %label До какого возраста
+            = f.text_field :finish_age, class: 'form-control'
+          .form-group
+            %label Детей в лагере
+            = f.text_field :kids_in_camp, class: 'form-control'
+          .form-group
+            %label Детей в отряде
+            = f.text_field :kids_in_group, class: 'form-control'
+          .form-group
+            %label Вожатых на отряд
+            = f.text_field :leaders_per_group, class: 'form-control'
+          .form-group
+            %label День открытых дверей
+            = f.check_box :promo_day
+          .form-group
+            %label Качество фотографий
+            = f.text_field :photos, class: 'form-control'
+          .form-group
+            %label Ссылки на видео
+            = f.text_area :video_links, class: 'form-control', rows: '2'
+          .form-group
+            %label Сезон работы
+            = f.collection_select :season_type_ids, SeasonType.all.order(:name), :id, :name, {}, {multiple: true, class: "js-select"}
+          .form-group
+            %label Общий комментарий
+            = f.text_area :comment, class: 'form-control', rows: '20'
+          .form-group
+            %label Заполнение анкеты завершено
+            = f.check_box :is_finished
+      = f.submit 'Сохранить форму', class: 'btn btn-info'

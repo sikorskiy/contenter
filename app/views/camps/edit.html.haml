@@ -1,2 +1,4 @@
-%h1 Редактирование лагеря
-= render 'form'
+- if current_user.is_admin?
+  = render 'admin_form'
+- else
+  = render 'content_form'

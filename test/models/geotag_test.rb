@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CampSubcategoryTest < ActiveSupport::TestCase
+class GeotagTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

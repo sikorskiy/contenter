@@ -1,0 +1,12 @@
+%h3
+  = camp.name
+%p.font-weight-light.no_margin
+  %strong
+    Организация:
+  = camp.company.name
+
+- camp_admin_name_hash.each do |a, b|
+  %p.font-weight-light.no_margin
+    %strong
+      = b
+    = camp[a]

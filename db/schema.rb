@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_26_183330) do
+ActiveRecord::Schema.define(version: 2018_07_29_083944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,33 @@ ActiveRecord::Schema.define(version: 2018_07_26_183330) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "camp_category_groupings", force: :cascade do |t|
+    t.bigint "camp_category_id"
+    t.bigint "camp_category_group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["camp_category_group_id"], name: "index_camp_category_groupings_on_camp_category_group_id"
+    t.index ["camp_category_id"], name: "index_camp_category_groupings_on_camp_category_id"
+  end
+
+  create_table "camp_category_groups", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "camp_shifts", force: :cascade do |t|
+    t.date "start"
+    t.date "finish"
+    t.integer "price"
+    t.text "program"
+    t.text "comment"
+    t.bigint "camp_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["camp_id"], name: "index_camp_shifts_on_camp_id"
   end
 
   create_table "camp_subcategories", force: :cascade do |t|
@@ -41,7 +68,42 @@ ActiveRecord::Schema.define(version: 2018_07_26_183330) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "company_id"
+    t.text "preview"
+    t.text "program"
+    t.text "study"
+    t.text "accommodation"
+    t.text "meal"
+    t.text "security"
+    t.text "pricing"
+    t.text "adds"
+    t.string "latitude"
+    t.string "longitude"
+    t.integer "starting_age"
+    t.integer "finish_age"
+    t.integer "foundation_year"
+    t.integer "kids_in_camp"
+    t.integer "kids_in_group"
+    t.integer "leaders_per_group"
+    t.boolean "promo_day"
+    t.integer "photos"
+    t.text "video_links"
+    t.text "comment"
+    t.string "edition"
+    t.text "schedule"
+    t.bigint "user_id"
+    t.boolean "is_finished"
+    t.boolean "presentation"
     t.index ["company_id"], name: "index_camps_on_company_id"
+    t.index ["user_id"], name: "index_camps_on_user_id"
+  end
+
+  create_table "categorizations", force: :cascade do |t|
+    t.bigint "camp_category_id"
+    t.bigint "camp_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["camp_category_id"], name: "index_categorizations_on_camp_category_id"
+    t.index ["camp_id"], name: "index_categorizations_on_camp_id"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -52,7 +114,6 @@ ActiveRecord::Schema.define(version: 2018_07_26_183330) do
   end
 
   create_table "content_camps", force: :cascade do |t|
-    t.bigint "camps_id"
     t.boolean "presentation"
     t.text "anounce"
     t.text "program"
@@ -61,8 +122,43 @@ ActiveRecord::Schema.define(version: 2018_07_26_183330) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.index ["camps_id"], name: "index_content_camps_on_camps_id"
     t.index ["user_id"], name: "index_content_camps_on_user_id"
+  end
+
+  create_table "geotags", force: :cascade do |t|
+    t.string "name"
+    t.bigint "camp_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["camp_id"], name: "index_geotags_on_camp_id"
+  end
+
+  create_table "group_leaders", force: :cascade do |t|
+    t.string "name"
+    t.text "role"
+    t.text "about"
+    t.bigint "camp_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["camp_id"], name: "index_group_leaders_on_camp_id"
+  end
+
+  create_table "review_roles", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "review_text"
+    t.string "name"
+    t.boolean "is_negative"
+    t.bigint "review_role_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "camp_id"
+    t.index ["camp_id"], name: "index_reviews_on_camp_id"
+    t.index ["review_role_id"], name: "index_reviews_on_review_role_id"
   end
 
   create_table "season_types", force: :cascade do |t|
@@ -80,6 +176,12 @@ ActiveRecord::Schema.define(version: 2018_07_26_183330) do
     t.index ["season_type_id"], name: "index_seasonships_on_season_type_id"
   end
 
+  create_table "user_roles", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -94,8 +196,10 @@ ActiveRecord::Schema.define(version: 2018_07_26_183330) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.bigint "user_role_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["user_role_id"], name: "index_users_on_user_role_id"
   end
 
 end
