@@ -11,7 +11,7 @@ class User < ApplicationRecord
   before_validation :default_role
 
   def is_admin?
-    user_role.name == "user"
+    user_role.name == "admin"
   end
 
 
