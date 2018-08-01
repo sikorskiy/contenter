@@ -40,6 +40,9 @@
           .form-group
             %label Страница на Inlearno
             = f.text_field :inlearno_url, class: 'form-control'
+          .form-group
+            %label Назначить контент-менеджера
+            = f.collection_select :user_id, User.all.order(:name), :id, :name, {}, class: "js-select"
       .panel.panel-info
         .panel-heading
           %h3.panel-title
