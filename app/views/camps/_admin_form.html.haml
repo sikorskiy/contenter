@@ -32,19 +32,19 @@
             %label Страница на deti-travel
             = f.text_field :dt_url, class: 'form-control'
           .form-group
-            %label Страница на Inlearno
-            = f.text_field :inlearno_url, class: 'form-control'
-          .form-group
             %label Страница на bestcamps
             = f.text_field :bc_url, class: 'form-control'
           .form-group
             %label Страница на poehali-deti
             = f.text_field :pd_url, class: 'form-control'
+          .form-group
+            %label Страница на Inlearno
+            = f.text_field :inlearno_url, class: 'form-control'
       .panel.panel-info
         .panel-heading
           %h3.panel-title
-            Заполняется контент-менеджером
-        .panel-body
+            = link_to 'Заполняется контент-менеджером (показать/скрыть)', '#', id: 'hiding-link'
+        #admin-panel.panel-body{style: 'display: none;'}
           .form-group
             %label Наличие презентации о лагере
             = f.check_box :presentation
