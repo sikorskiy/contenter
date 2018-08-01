@@ -19,7 +19,7 @@ class Camp < ApplicationRecord
 
   def self.next_camp_for_edition(user_id)
     # should be added choosing the same organization later
-    camp = Camp.where('user_id = ? AND (is_finished IS NULL OR is_finished = 0)', user_id) #already started camp
+    camp = Camp.where('user_id = ? AND (is_finished IS NULL OR is_finished = FALSE)', user_id) #already started camp
     if camp.blank?
       camp = Camp.where('is_finished IS NULL')
       return nil if camp.blank?
