@@ -61,15 +61,17 @@ class CampsController < ApplicationController
   private
 
   def update_geotags
-    geotags = params[:camp][:geotag_ids].collect do |g|
-      if g.to_i.zero?
-        geotag = Geotag.create(name: g)
-        geotag.id.to_s
-      else
-        g
+    unless params[:camp][:geotag_ids].blank?
+      geotags = params[:camp][:geotag_ids].collect do |g|
+        if g.to_i.zero?
+          geotag = Geotag.create(name: g)
+          geotag.id.to_s
+        else
+          g
+        end
       end
+      params[:camp][:geotag_ids] = geotags
     end
-    params[:camp][:geotag_ids] = geotags
   end
 
   def camp_content_params
