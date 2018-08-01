@@ -12,9 +12,12 @@
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %ul.nav.navbar-nav
         %li
-          = link_to "Компании", companies_path
+          - if current_user.is_admin?
+            = link_to 'Компании', companies_path
+          - else
+            = link_to 'Новый лагерь', new_camp_path
         %li
-          = link_to "Лагеря", camps_path
+          = link_to 'Все лагеря', camps_path
       %ul.nav.navbar-nav.navbar-right
         %li.dropdown
           %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}

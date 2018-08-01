@@ -2,7 +2,7 @@
   = @camp.name
 .row
   .col-md-12
-    = form_for @camp do |f|
+    = form_for @camp, id: 'content_form' do |f|
       .panel.panel-danger
         .panel-heading
           %h3.panel-title
@@ -11,6 +11,9 @@
           .form-group
             %label Название организации
             = text_field_tag :company_id, @camp.company.name, class: 'form-control', readonly: 'true'
+          .form-group
+            %label ID лагеря
+            = text_field_tag :camp_id, @camp.id, class: 'form-control', readonly: 'true'
           .form-group
             %label Название лагеря
             = f.text_field :name, class: 'form-control', readonly: 'true'
@@ -51,19 +54,16 @@
             = f.check_box :presentation
           .form-group
             %label Анонс лагеря
-            = f.text_area :preview, class: 'form-control', rows: '20'
+            = f.text_area :preview, class: 'form-control', rows: '20', id: 'big_field'
           .form-group
             %label Программа лагеря
             = f.text_area :program, class: 'form-control', rows: '20'
           .form-group
-            %label Распорядок дня
-            = f.text_area :schedule, class: 'form-control', rows: '20'
-          .form-group
             %label Обучение
             = f.text_area :study, class: 'form-control', rows: '20'
           .form-group
-            %label Категория лагеря
-            = f.collection_select :camp_category_ids, CampCategory.all.order(:name), :id, :name, {}, {multiple: true, class: "js-select"}
+            %label Распорядок дня
+            = f.text_area :schedule, class: 'form-control', rows: '20'
           .form-group
             %label Размещение/территория
             = f.text_area :accommodation, class: 'form-control', rows: '20'
@@ -73,6 +73,17 @@
           .form-group
             %label Медицина/безопасность
             = f.text_area :security, class: 'form-control', rows: '20'
+          .form-group
+            %label Сезон работы
+            = f.collection_select :season_type_ids, SeasonType.all.order(:name), :id, :name, {}, {multiple: true, class: "js-select"}
+          .form-group
+            %label Категория лагеря
+            = f.collection_select :camp_category_ids, CampCategory.all.order(:name), :id, :name, {}, {multiple: true, class: "js-select"}
+          %fieldset
+            %legend Смены в лагере
+            = f.fields_for :camp_shifts do |builder|
+              = render 'camp_shift_fields', f: builder, i: builder.options[:child_index]
+            = link_to_add_fields 'Добавить смену', f, :camp_shifts
           .form-group
             %label Что входит в стоимость
             = f.text_area :pricing, class: 'form-control', rows: '20'
@@ -95,6 +106,9 @@
             %label До какого возраста
             = f.text_field :finish_age, class: 'form-control'
           .form-group
+            %label Год основания лагеря
+            = f.text_field :foundation_year, class: 'form-control'
+          .form-group
             %label Детей в лагере
             = f.text_field :kids_in_camp, class: 'form-control'
           .form-group
@@ -113,12 +127,25 @@
             %label Ссылки на видео
             = f.text_area :video_links, class: 'form-control', rows: '2'
           .form-group
-            %label Сезон работы
-            = f.collection_select :season_type_ids, SeasonType.all.order(:name), :id, :name, {}, {multiple: true, class: "js-select"}
-          .form-group
             %label Общий комментарий
             = f.text_area :comment, class: 'form-control', rows: '20'
+          %fieldset
+            %legend Вожатые в лагере
+            .form-group
+              %label Анонс о вожатых
+              = f.text_area :group_leader_anounce, class: 'form-control', rows: '3'
+            = f.fields_for :group_leaders do |builder|
+              = render 'group_leader_fields', f: builder, i: builder.options[:child_index]
+            = link_to_add_fields 'Добавить вожатого', f, :group_leaders
+          %fieldset
+            %legend Отзывы о лагере
+            = f.fields_for :reviews do |builder|
+              = render 'review_fields', f: builder, i: builder.options[:child_index]
+            = link_to_add_fields 'Добавить отзыв', f, :reviews
           .form-group
             %label Заполнение анкеты завершено
             = f.check_box :is_finished
       = f.submit 'Сохранить форму', class: 'btn btn-info'
+
+
+

@@ -7,6 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 #
 
-%w[Православный Мусульманский Военно-патриотический Математический Футбольный].each do |name|
+%w[?-Зима ?-Лето ?-Весна ?-Осень Зима Лето Весна Осень].each do |name|
   CampCategory.find_or_create_by(name: name)
+end
+
+%w[Православный Мусульманский Математический Футбольный].each do |name|
+  CampCategory.find_or_create_by(name: name)
+end
+
+%w[Родитель Мама Школьник Бабушка Дедушка Папа].each do |name|
+  ReviewRole.find_or_create_by(name: name)
 end

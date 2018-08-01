@@ -1,0 +1,18 @@
+%fieldset
+  %legend
+    = 'Отзыв '
+  .form-group
+    = f.label :name, 'Имя'
+    = f.text_field :name, class: 'form-control'
+    .form-group
+      = f.label :name, 'Роль'
+      = f.collection_select :review_role_id, ReviewRole.all.order(:name), :id, :name, {}, {class: 'js-select'}
+    .form-group
+      = f.label :review_text, 'Текст отзыва'
+      = f.text_area :review_text, class: 'form-control', rows: '5'
+    .form-group
+      = f.check_box :is_negative
+      = f.label :is_negative, 'Отзыв негативный'
+    .form-group.alert.alert-danger
+      = f.check_box :_destroy
+      = f.label :_destroy, 'Удалить отзыв'

@@ -5,6 +5,12 @@ class CampsController < ApplicationController
     @camps = current_user.is_admin? ? Camp.all : Camp.where('user_id = ?', current_user.id)
   end
 
+  def autosave
+    @camp = Camp.find(params[:camp_id])
+    params[:is_finished] = @camp.is_finished if current_user.is_admin? #only for content person is ok to change is_finished
+    @camp.update_attributes(current_user.is_admin? ? camp_full_params : camp_content_params)
+  end
+
   def new
     if current_user.is_admin?
       @camp = Camp.new
@@ -23,6 +29,7 @@ class CampsController < ApplicationController
 
   def create
     @camp = Camp.create(camp_full_params)
+    @camp.update_attribute(:is_finished, nil)
     @camp.user = current_user
     @camp.save
     if @camp.errors.any?
@@ -35,6 +42,7 @@ class CampsController < ApplicationController
 
   def update
     @camp = Camp.find(params[:id])
+    params[:is_finished] = @camp.is_finished if current_user.is_admin? #only for content person is ok to change is_finished
     @camp.update_attributes(current_user.is_admin? ? camp_full_params : camp_content_params)
     redirect_to camps_path
   end
@@ -52,20 +60,26 @@ class CampsController < ApplicationController
 
   private
 
+  def update_geotags
+    geotags = params[:camp][:geotag_ids].collect do |g|
+      if g.to_i.zero?
+        geotag = Geotag.create(name: g)
+        geotag.id.to_s
+      else
+        g
+      end
+    end
+    params[:camp][:geotag_ids] = geotags
+  end
+
   def camp_content_params
-    params.require(:camp).permit(
-      { season_type_ids: [] }, { camp_category_ids: [] }, { geotag_ids: [] }, :preview, :program, :study, :schedule,
-      :accommodation, :meal, :security, :pricing, :adds, :latitude, :longitude, :starting_age,
-      :finish_age, :kids_in_group, :presentation, :kids_in_camp, :leaders_per_group,
-      :foundation_year, :promo_day,  :photos, :video_links, :comment, :is_finished)
+    update_geotags
+    params.require(:camp).permit!
   end
 
   def camp_full_params
     # is_finished is absent cause only content-person should check it
-    params.require(:camp).permit(
-      { season_type_ids: [] }, { camp_category_ids: [] }, { geotag_ids: [] }, :name, :url, :company_id, :incamp_url, :facebook, :vk, :ml_url, :dt_url,
-      :inlearno_url, :bc_url, :pd_url, :preview, :program, :study, :schedule, :accommodation, :meal, :security,
-      :pricing, :adds, :latitude, :longitude, :starting_age, :finish_age, :kids_in_group, :presentation,
-      :kids_in_camp, :leaders_per_group, :foundation_year, :promo_day,  :photos, :video_links, :comment)
+    update_geotags
+    params.require(:camp).permit!
   end
 end

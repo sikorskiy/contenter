@@ -1,0 +1,18 @@
+%fieldset
+  %legend
+    = 'Смена'
+  .form-group
+    = f.label :start, 'Начало'
+    = f.date_field :start, class: 'form-control'
+    .form-group
+      = f.label :finish, 'Конец'
+      = f.date_field :finish, class: 'form-control'
+    .form-group
+      = f.label :price, 'Цена'
+      = f.text_field :price, class: 'form-control'
+    .form-group
+      = f.label :program, 'Программа смены'
+      = f.text_area :program, class: 'form-control', rows: '5'
+    .form-group.alert.alert-danger
+      = f.check_box :_destroy
+      = f.label :_destroy, 'Удалить смену'
