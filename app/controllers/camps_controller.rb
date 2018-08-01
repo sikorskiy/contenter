@@ -49,7 +49,7 @@ class CampsController < ApplicationController
 
   def edit
     @camp = Camp.find(params[:id])
-    if @camp.user == current_user
+    if @camp.user == current_user || current_user.is_admin?
       @camp.update_attribute(:is_finished, false) unless current_user.is_admin?
     else
       flash[:warning] = 'Вы не можете редактировать этот лагерь'
