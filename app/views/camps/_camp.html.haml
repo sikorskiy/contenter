@@ -60,10 +60,10 @@
   = camp.security
 %p.font-weight-light.no_margin
   %strong Сезоны:
-  = camp.season_types.collect(&:name).join(', ')
+  = camp.season_types.collect(&:name).blank? ? '' : camp.season_types.collect(&:name).join(', ')
 %p.font-weight-light.no_margin
   %strong Категории лагеря:
-  = camp.camp_categories.collect(&:name).join(', ')
+  = camp.camp_categories.collect(&:name).blank? ? '' : camp.camp_categories.collect(&:name).join(', ')
 %p.font-weight-light.no_margin
   %strong Смены в лагере:
   - camp.camp_shifts.each_with_index do |shift, i|
@@ -96,7 +96,7 @@
   = camp.longitude
 %p.font-weight-light.no_margin
   %strong Геотеги лагеря:
-  = camp.geotags.collect(&:name).join(', ')
+  = camp.geotags.collect(&:name).blank? ? '' : camp.geotags.collect(&:name).join(', ')
 %p.font-weight-light.no_margin
   %strong С какого возраста:
   = camp.starting_age
