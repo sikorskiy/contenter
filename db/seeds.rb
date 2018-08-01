@@ -37,3 +37,13 @@ end
 %w[Сочи Анапа Краснодарский\ край].each do |name|
   Geotag.find_or_create_by(name: name)
 end
+
+Company.create({name: 'ООО "МБА"', entity: 'ООО "МБА"'})
+Company.create({name: 'ООО «Красная поляна Тревел»', entity: 'ООО «Красная поляна Тревел»'})
+Company.create({name: 'ООО "Гардарика"', entity: 'ООО "Гардарика"'})
+Company.create({name: 'ООО "Реликт Групп"', entity: 'ООО "Реликт Групп"'})
+Company.create({name: 'ООО "ВТОЧКУ"', entity: 'ООО "ВТОЧКУ"'})
+Company.create({name: 'ЦОО "Нетология Групп"', entity: 'ЦОО "Нетология Групп"'})
+Company.create({name: 'ООО "Национальный центр профессиональной ориентации"', entity: 'ООО "Национальный центр профессиональной ориентации"'})
+Company.create({name: 'ООО "Рекалето"', entity: 'ООО "Рекалето"'})
+Company.create({name: 'ООО "ФК "Штутгарт"', entity: 'ООО "ФК "Штутгарт"'})
