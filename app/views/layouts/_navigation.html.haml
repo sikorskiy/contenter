@@ -11,13 +11,14 @@
     / Collect the nav links, forms, and other content for toggling
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %ul.nav.navbar-nav
-        %li
-          - if current_user.is_admin?
-            = link_to 'Компании', companies_path
-          - else
-            = link_to 'Новый лагерь', new_camp_path
-        %li
-          = link_to 'Все лагеря', camps_path
+        - if user_signed_in?
+          %li
+            - if current_user.is_admin?
+              = link_to 'Компании', companies_path
+            - else
+              = link_to 'Новый лагерь', new_camp_path
+          %li
+            = link_to 'Все лагеря', camps_path
       %ul.nav.navbar-nav.navbar-right
         %li.dropdown
           %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}

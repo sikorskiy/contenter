@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 #
 
-%w[?-Зима ?-Лето ?-Весна ?-Осень Зима Лето Весна Осень].each do |name|
+%w[Зима(?) Лето(?) Весна(?) Осень(?) Зима Лето Весна Осень].each do |name|
   CampCategory.find_or_create_by(name: name)
 end
 

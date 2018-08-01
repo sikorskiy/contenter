@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessor :name
+  #attr_accessor :name
 
   belongs_to :user_role
   has_many :camps
@@ -14,7 +14,6 @@ class User < ApplicationRecord
     user_role.name == "user"
   end
 
-  #validates :quantity, presence: true, numericality: {greater_than: 0}
 
   private
 
