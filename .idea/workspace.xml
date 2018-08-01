@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0aabda1d-818d-4d06-8bc6-315d880a32ff" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/config/initializers/devise.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/initializers/devise.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20180726090523_add_reference_to_content_camps.rb" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -546,16 +546,15 @@
       <updated>1532538779184</updated>
       <workItem from="1532538781127" duration="77106000" />
       <workItem from="1532967808294" duration="1610000" />
-      <workItem from="1533102347779" duration="7255000" />
+      <workItem from="1533102347779" duration="7654000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85971000" />
+    <option name="totallyTimeSpent" value="86370000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="22" y="63" width="1400" height="798" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2533137" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
