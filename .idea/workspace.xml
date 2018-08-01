@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0aabda1d-818d-4d06-8bc6-315d880a32ff" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/app/models/camp.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/camp.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/select.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/javascripts/select.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -27,14 +27,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="haml" value="1642" />
-          <entry key="js" value="8" />
+          <entry key="js" value="11" />
           <entry key="rb" value="778" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Haml" value="1642" />
-          <entry key="JavaScript" value="8" />
+          <entry key="JavaScript" value="11" />
           <entry key="Ruby" value="778" />
         </counts>
       </usages-collector>
@@ -42,12 +42,14 @@
         <counts>
           <entry key="erb" value="1" />
           <entry key="haml" value="9" />
+          <entry key="js" value="1" />
           <entry key="rb" value="28" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Haml" value="9" />
+          <entry key="JavaScript" value="1" />
           <entry key="RHTML" value="1" />
           <entry key="Ruby" value="28" />
         </counts>
@@ -94,7 +96,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/camp.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="315">
@@ -117,6 +119,15 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="720">
               <caret line="48" selection-start-line="48" selection-end-line="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/select.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="388">
+              <caret line="31" column="7" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -212,7 +223,6 @@
         <option value="$PROJECT_DIR$/app/views/camps/_camp_shift_fields.html.haml" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/app/views/camps/_content_form.html.haml" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/select.js" />
         <option value="$PROJECT_DIR$/app/controllers/registrations_controller.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
@@ -225,6 +235,7 @@
         <option value="$PROJECT_DIR$/app/controllers/camps_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/camps/_admin_form.html.haml" />
         <option value="$PROJECT_DIR$/app/models/camp.rb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/select.js" />
       </list>
     </option>
   </component>
@@ -538,12 +549,12 @@
       <updated>1532538779184</updated>
       <workItem from="1532538781127" duration="77106000" />
       <workItem from="1532967808294" duration="1610000" />
-      <workItem from="1533102347779" duration="13407000" />
+      <workItem from="1533102347779" duration="13953000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92123000" />
+    <option name="totallyTimeSpent" value="92669000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="22" y="63" width="1400" height="798" extended-state="0" />
@@ -709,13 +720,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/select.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="40" column="3" selection-start-line="40" selection-start-column="3" selection-end-line="40" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/camps/index.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -878,6 +882,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="21" column="82" selection-start-line="21" selection-start-column="82" selection-end-line="21" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/select.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="31" column="7" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
         </state>
       </provider>
     </entry>
