@@ -1,3 +1,11 @@
 %h1.text-center Все лагеря
+
+- if current_user.is_admin?
+  = form_tag camps_path, method: :get do
+    .form-group
+      = label_tag :user_ids, "Отфильтровать по пользователям"
+      = select_tag :user_ids, options_from_collection_for_select(User.all.order(:name), :id, :name, params[:user_ids]), multiple: true, class: "form-control form-control-sm js-select"
+    = submit_tag "Найти книги", name: nil, class: "btn btn-primary btn-sm"
+
 = link_to "Создать новый", new_camp_path
 = render @camps

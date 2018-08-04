@@ -4,7 +4,11 @@
   %strong
     Организация:
   = camp.company.name
-
+- if current_user.is_admin?
+  %p.font-weight-light.no_margin
+    %strong
+      Контент-менеджер:
+    = camp.user.name
 %p.font-weight-light.no_margin
   %strong
     Сайт лагеря:
@@ -145,6 +149,24 @@
         %p.font-weight-light.no_margin
           %strong Информация от вожатого:
           = gl.about
+%p.font-weight-light.no_margin
+  %strong Отзывы:
+  - camp.reviews.each_with_index do |r, i|
+    %div{style: 'padding-left: 10px;'}
+      %p.no_margin
+        = 'Отзыв ' + (i+1).to_s
+        %p.font-weight-light.no_margin
+          %strong Имя:
+          = r.name
+        %p.font-weight-light.no_margin
+          %strong Роль:
+          = r.review_role.name
+        %p.font-weight-light.no_margin
+          %strong Текст:
+          = r.review_text
+        %p.font-weight-light.no_margin
+          %strong Отзыв негативный:
+          = r.is_negative ? 'Да' : 'Нет'
 %p.font-weight-light.no_margin
   %strong Анкета окончена:
   = camp.is_finished ? 'Да' : 'Нет'
