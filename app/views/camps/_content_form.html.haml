@@ -3,6 +3,14 @@
 .row
   .col-md-12
     = form_for @camp, id: 'content_form' do |f|
+
+      %p
+        Анкета прошла проверку администратора:
+        %span{style: "color: #{@camp.is_approved.blank? ? 'red' : 'green'};"}
+          = @camp.is_approved.blank? ? 'Нет' : 'Да'
+      .form-group
+        %label Комментарий администратора
+        = f.text_area :admin_comment, class: 'form-control', readonly: 'true'
       .panel.panel-danger
         .panel-heading
           %h3.panel-title
