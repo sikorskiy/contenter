@@ -18,7 +18,7 @@
 %p.font-weight-light.no_margin
   %strong
     Комментарий администратора
-  %span{style: "color: #{camp.is_approved.blank? ? 'red': 'green'}"}
+  %div{class: "alert alert-#{camp.is_approved.blank? ? 'danger': 'success'}"}
     = simple_format camp.admin_comment
 
 %p.font-weight-light.no_margin
