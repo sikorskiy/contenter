@@ -47,6 +47,12 @@
           .form-group
             %label Контент-менеджер
             = f.collection_select :user_id, User.all.order(:name), :id, :name, {}, {class: 'js-select'}
+          .form-group
+            %label Комментарий администратора
+            = f.text_area :admin_comment, class: 'form-control', rows: '5'
+          .form-group
+            %label Анкета прошла проверку администратора
+            = f.check_box :is_approved
       .panel.panel-info
         .panel-heading
           %h3.panel-title
@@ -148,12 +154,6 @@
           .form-group
             %label Заполнение анкеты завершено
             = f.check_box :is_finished
-          .form-group
-            %label Комментарий администратора
-            = f.text_area :admin_comment, class: 'form-control', rows: '5'
-          .form-group
-            %label Анкета прошла проверку администратора
-            = f.check_box :is_approved
       = f.submit 'Сохранить форму', class: 'btn btn-info'
 
 
