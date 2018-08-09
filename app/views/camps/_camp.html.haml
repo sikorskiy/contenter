@@ -19,7 +19,7 @@
   %strong
     Комментарий администратора
   %span{style: "color: #{camp.is_approved.blank? ? 'red': 'green'}"}
-    = camp.admin_comment
+    = simple_format camp.admin_comment
 
 %p.font-weight-light.no_margin
   %strong
