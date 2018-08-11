@@ -30,6 +30,9 @@
             %label Страница на Incamp
             = f.text_field :incamp_url, class: 'form-control'
           .form-group
+            %label Наличие цены на Incamp
+            = f.check_box :has_incamp_price
+          .form-group
             %label Страница на mir-lagerey
             = f.text_field :ml_url, class: 'form-control'
           .form-group

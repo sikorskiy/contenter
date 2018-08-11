@@ -38,6 +38,10 @@
             %label Страница на Incamp
             = f.text_field :incamp_url, class: 'form-control', readonly: 'true'
           .form-group
+            %label
+              Цена на Incamp:
+              = @camp.has_incamp_price? ? 'Да' : 'Нет'
+          .form-group
             %label Страница на mir-lagerey
             = f.text_field :ml_url, class: 'form-control', readonly: 'true'
           .form-group
