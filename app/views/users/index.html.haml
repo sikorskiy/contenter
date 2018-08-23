@@ -1,2 +1,16 @@
-%h1 Users#index
-%p Find me in app/views/users/index.html.haml
+%p Userlist
+%p
+%table{:border => 1}
+  %tr
+    %th Пользователь
+    %th Колличество лагерей
+    %th Колличество заполненых лагерей
+    %th Колличество принятых администратором лагерей
+- @u.each do |user|
+  %tr 
+    %td= user.name
+    %td= user.camps.size
+    %td= user.camps.find_all{|elem| elem.is_finished == true}.size 
+    %td= user.camps.find_all{|elem| elem.is_approved == true}.size
+
+

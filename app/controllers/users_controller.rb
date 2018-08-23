@@ -3,5 +3,7 @@ class UsersController < ApplicationController
   end
 
   def index
+    @u = User.all
+
   end
 end

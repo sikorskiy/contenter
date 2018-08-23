@@ -14,7 +14,8 @@ development:
   <<: *default
   database: contenter_local
   username: adiutant
-  host: localhost
+  #host: ""
+
 
 
 # Warning: The database defined as "test" will be erased and
@@ -22,8 +23,8 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
+  #database: db/test.sqlite3
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  #database: db/production.sqlite3
