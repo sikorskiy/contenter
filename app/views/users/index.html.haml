@@ -1,16 +1,17 @@
 %p Userlist
 %p
-%table{:border => 1}
+%table.table.table-condenced{:bgcolor => "white", :border => "3", :bordercolor => "red", :cellpadding => "8", :width => "100%"}
   %tr
     %th Пользователь
     %th Колличество лагерей
     %th Колличество заполненых лагерей
     %th Колличество принятых администратором лагерей
+    %th Время последней активности
 - @u.each do |user|
   %tr 
     %td= user.name
     %td= user.camps.size
     %td= user.camps.find_all{|elem| elem.is_finished == true}.size 
     %td= user.camps.find_all{|elem| elem.is_approved == true}.size
-
+    %td= user.last_sign_in_at
 
