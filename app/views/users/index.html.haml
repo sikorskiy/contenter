@@ -7,11 +7,10 @@
     %th Колличество заполненых лагерей
     %th Колличество принятых администратором лагерей
     %th Время последней активности
-- @u.each do |user|
+- @u.each do |user| 
   %tr 
-    %td= user.name
+    %th= user.name
     %td= user.camps.size
     %td= user.camps.find_all{|elem| elem.is_finished == true}.size 
     %td= user.camps.find_all{|elem| elem.is_approved == true}.size
     %td= user.last_sign_in_at
-
