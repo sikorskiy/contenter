@@ -1,4 +1,5 @@
 %p Userlist
+
 %p
 %table.table.table-condenced{:bgcolor => "white", :border => "3", :bordercolor => "red", :cellpadding => "8", :width => "100%"}
   %tr
@@ -9,8 +10,9 @@
     %th Время последней активности
 - @u.each do |user| 
   %tr 
-    %th= user.name
+    %td= user.name
     %td= user.camps.size
     %td= user.camps.find_all{|elem| elem.is_finished == true}.size 
     %td= user.camps.find_all{|elem| elem.is_approved == true}.size
     %td= user.last_sign_in_at
+

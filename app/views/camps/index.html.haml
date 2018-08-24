@@ -1,6 +1,7 @@
 %h1.text-center Все лагеря
 
 - if current_user.is_admin?
+  = link_to "Список пользователей", "/users/index"
   = form_tag camps_path, method: :get do
     .form-group
       = label_tag :user_ids, "Отфильтровать по пользователям"
@@ -8,5 +9,4 @@
     = submit_tag "Найти пользователя", name: nil, class: "btn btn-primary btn-sm"
 
 = link_to "Создать новый", new_camp_path
-= link_to "Список пользователей", "/users/index"
 = render @camps
