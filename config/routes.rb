@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :camps
   resources :companies
+  get  "/camp/check", to: "camps#check"
   get  "/users/index", to: "users#index"
   devise_for :users
   root to: 'camps#index'
