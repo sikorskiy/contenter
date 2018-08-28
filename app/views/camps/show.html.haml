@@ -1,0 +1,187 @@
+%h3.text-center
+  = @camp.name
+%p.font-weight-light.no_margin
+  %strong
+    Организация:
+  = @camp.company.name
+- if current_user.is_admin?
+  %p.font-weight-light.no_margin
+    %strong
+      Контент-менеджер:
+    = @camp.user.name
+
+%p.font-weight-light.no_margin
+  %strong
+    Анкета прошла проверку администратора:
+  %span{style: "color: #{@camp.is_approved.blank? ? 'red': 'green'}"}
+    = @camp.is_approved.blank? ? 'Нет' : 'Да'
+%p.font-weight-light.no_margin
+  %strong
+    Комментарий администратора
+  %div{class: "alert alert-#{@camp.is_approved.blank? ? 'danger': 'success'}"}
+    = simple_format @camp.admin_comment
+
+%p.font-weight-light.no_margin
+  %strong
+    Сайт лагеря:
+  = @camp.url
+%p.font-weight-light.no_margin
+  %strong
+    Группа в фейсбук:
+  = @camp.facebook
+%p.font-weight-light.no_margin
+  %strong Группа в контакте:
+  = @camp.vk
+%p.font-weight-light.no_margin
+  %strong Инкэмп:
+  = @camp.incamp_url
+%p.font-weight-light.no_margin
+  %strong Наличие цены на Incamp:
+  = @camp.has_incamp_price ? 'Да' : 'Нет'
+%p.font-weight-light.no_margin
+  %strong Мир лагерей:
+  = @camp.ml_url
+%p.font-weight-light.no_margin
+  %strong Дети-тревел:
+  = @camp.dt_url
+%p.font-weight-light.no_margin
+  %strong Инлерно:
+  = @camp.inlearno_url
+%p.font-weight-light.no_margin
+  %strong Бест-кэмпс:
+  = @camp.bc_url
+%p.font-weight-light.no_margin
+  %strong Поехали дети:
+  = @camp.pd_url
+%p.font-weight-light.no_margin
+  %strong Наличие презентации:
+  = @camp.presentation ? 'Да' : 'Нет'
+%p.font-weight-light.no_margin
+  %strong Анонс лагеря:
+  = @camp.preview
+%p.font-weight-light.no_margin
+  %strong Программа:
+  = @camp.program
+%p.font-weight-light.no_margin
+  %strong Обучение:
+  = @camp.study
+%p.font-weight-light.no_margin
+  %strong Распорядок дня:
+  = @camp.schedule
+%p.font-weight-light.no_margin
+  %strong Размещение/территория:
+  = @camp.accommodation
+%p.font-weight-light.no_margin
+  %strong Питание:
+  = @camp.meal
+%p.font-weight-light.no_margin
+  %strong Безопасность/медицина:
+  = @camp.security
+%p.font-weight-light.no_margin
+  %strong Сезоны:
+  = @camp.season_types.collect(&:name).blank? ? '' : @camp.season_types.collect(&:name).join(', ')
+%p.font-weight-light.no_margin
+  %strong Категории лагеря:
+  = @camp.camp_categories.collect(&:name).blank? ? '' : @camp.camp_categories.collect(&:name).join(', ')
+%p.font-weight-light.no_margin
+  %strong Смены в лагере:
+  - @camp.camp_shifts.each_with_index do |shift, i|
+    %div{style: 'padding-left: 10px;'}
+      %p.no_margin
+        = 'Смена ' + (i+1).to_s
+        %p.font-weight-light.no_margin
+          %strong Начало смены
+          = shift.start
+        %p.font-weight-light.no_margin
+          %strong Конец смены
+          = shift.finish
+        %p.font-weight-light.no_margin
+          %strong Начало смены
+          = shift.price
+        %p.font-weight-light.no_margin
+          %strong Программа смены
+          = shift.program
+%p.font-weight-light.no_margin
+  %strong Что входит в стоимость:
+  = @camp.pricing
+%p.font-weight-light.no_margin
+  %strong Адрес:
+  = @camp.adds
+%p.font-weight-light.no_margin
+  %strong Широта:
+  = @camp.latitude
+%p.font-weight-light.no_margin
+  %strong Долгота:
+  = @camp.longitude
+%p.font-weight-light.no_margin
+  %strong Геотеги лагеря:
+  = @camp.geotags.collect(&:name).blank? ? '' : @camp.geotags.collect(&:name).join(', ')
+%p.font-weight-light.no_margin
+  %strong С какого возраста:
+  = @camp.starting_age
+%p.font-weight-light.no_margin
+  %strong До какого возраста:
+  = @camp.finish_age
+%p.font-weight-light.no_margin
+  %strong Год основания:
+  = @camp.foundation_year
+%p.font-weight-light.no_margin
+  %strong Детей в лагере:
+  = @camp.kids_in_camp
+%p.font-weight-light.no_margin
+  %strong Детей в отряде:
+  = @camp.kids_in_group
+%p.font-weight-light.no_margin
+  %strong Вожатых на отряд:
+  = @camp.leaders_per_group
+%p.font-weight-light.no_margin
+  %strong День открытых дверей:
+  = @camp.promo_day ? 'Да' : 'Нет'
+%p.font-weight-light.no_margin
+  %strong Качество фотографий:
+  = @camp.photos
+%p.font-weight-light.no_margin
+  %strong Ссылки на видео:
+  = @camp.video_links
+%p.font-weight-light.no_margin
+  %strong Общий комментарий:
+  = @camp.comment
+%p.font-weight-light.no_margin
+  %strong Общий анонс про вожатых:
+  = @camp.group_leader_anounce
+%p.font-weight-light.no_margin
+  %strong Вожатые:
+  - @camp.group_leaders.each_with_index do |gl, i|
+    %div{style: 'padding-left: 10px;'}
+      %p.no_margin
+        = 'Вожатый ' + (i+1).to_s
+        %p.font-weight-light.no_margin
+          %strong Имя вожатого:
+          = gl.name
+        %p.font-weight-light.no_margin
+          %strong Роль вожатого:
+          = gl.role
+        %p.font-weight-light.no_margin
+          %strong Информация от вожатого:
+          = gl.about
+%p.font-weight-light.no_margin
+  %strong Отзывы:
+  - @camp.reviews.each_with_index do |r, i|
+    %div{style: 'padding-left: 10px;'}
+      %p.no_margin
+        = 'Отзыв ' + (i+1).to_s
+        %p.font-weight-light.no_margin
+          %strong Имя:
+          = r.name
+        %p.font-weight-light.no_margin
+          %strong Роль:
+          = r.review_role.name
+        %p.font-weight-light.no_margin
+          %strong Текст:
+          = r.review_text
+        %p.font-weight-light.no_margin
+          %strong Отзыв негативный:
+          = r.is_negative ? 'Да' : 'Нет'
+%p.font-weight-light.no_margin
+  %strong Анкета окончена:
+  = @camp.is_finished ? 'Да' : 'Нет'
