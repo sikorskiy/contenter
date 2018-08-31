@@ -2,6 +2,11 @@
   = @camp.name
 %p.font-weight-light.no_margin
   %strong
+    Заполненость: 
+  = @camp.fullness  
+    
+%p.font-weight-light.no_margin
+  %strong
     Организация:
   = @camp.company.name
 - if current_user.is_admin?

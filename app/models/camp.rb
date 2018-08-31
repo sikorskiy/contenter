@@ -30,5 +30,154 @@ class Camp < ApplicationRecord
     end
     camp.first
   end
+ def fullness
+  score = 0
+  max_score = 37
+  camp = Camp
+  if  presentation.nil?
+    score = score + 0
+  else
+    score = score + 1
+  end
+  if preview.blank?
+    score = score + 0
+  else 
+    score = score + 2
+  end
+  if program.blank?
+    score = score + 0 
+  else
+    score = score + 2
+  end
+  if  study.blank?
+    score = score + 0
+  else
+    score = score + 2
+  end
+  if schedule.blank?
+    score = score + 0
+  else
+    score = score + 2
+  end
+  if accommodation.blank?
+    score = score + 0
+  else
+    score = score + 2
+  end
+  if  meal.blank?
+    score = score + 0
+  else
+    score = score + 1
+  end
+  if  security.blank?
+    score = score + 0
+  else
+    score = score + 2
+  end
+  if seasonships.blank?
+    score = score + 0
+  else
+    score = score + 1
+  end
+  if  camp_categories.blank?
+    score = score + 0
+  else
+    score = score + 1
+  end
+  if  pricing.blank?
+    score = score + 0
+  else
+    score = score + 1
+  end
+   if  adds.blank?
+    score = score + 0
+  else
+    score = score + 1
+  end
+
+   if  latitude.blank?
+    score = score + 0
+  else
+    score = score + 1
+  end
+   if  longitude.blank?
+    score = score + 0
+  else
+    score = score + 1
+  end
+   if  geotags.blank?
+    score = score + 0
+  else
+    score = score + 1
+  end
+   if  starting_age.blank?
+    score = score + 0
+  else
+    score = score + 1
+  end
+   if  finish_age.blank?
+    score = score + 0
+  else
+    score = score + 1
+  end
+   if  foundation_year.blank?
+    score = score + 0
+  else
+    score = score + 1
+  end
+  if  kids_in_camp.blank?
+    score = score + 0
+  else
+    score = score + 1
+  end
+  if  kids_in_group.blank?
+    score = score + 0
+  else
+    score = score + 1
+  end
+  if  leaders_per_group.blank?
+    score = score + 0
+  else
+    score = score + 1
+  end
+  if  promo_day.nil?
+    score = score + 0
+  else
+    score = score + 1
+  end
+  if  photos.blank?
+    score = score + 0
+  else
+    score = score + 1
+  end
+  if  video_links.blank?
+    score = score + 0
+  else
+    score = score + 1
+  end
+  if  group_leader_anounce.blank?
+    score = score + 0
+  else
+    score = score + 2
+  end
+  if  group_leaders.blank?
+    score = score + 0
+  else
+    score = score + 2
+  end
+  if  reviews.blank?
+    score = score + 0
+  else
+    score = score + 2
+  end
+  if  is_finished.nil?
+    score = score + 0
+  else
+    score = score + 1
+  end
+  full = score.to_f / max_score.to_f
+  fl = full * 100
+  return fl.to_i.to_s + "%"
+ end
 
 end
