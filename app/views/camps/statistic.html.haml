@@ -1,0 +1,10 @@
+%h1{:align => "center"} Статистика сайта
+%table.table.table-condenced{:bgcolor => "white", :border => "3", :bordercolor => "blue", :cellpadding => "8", :width => "100%"}
+  %tr
+    %th Колличество лагерей
+    %th Колличество заполненых лагерей
+    %th Колличество принятых администратором лагерей
+  %tr 
+    %td= Camp.all.size
+    %td= Camp.all.find_all{|elem| elem.is_finished == true}.size
+    %td= Camp.all.find_all{|elem| elem.is_approved == true}.size

@@ -1,2 +1,10 @@
-%h1 Show current user
-
+%h1{:align => "center"} Ваши лагеря
+%table.table.table-condenced{:bgcolor => "white", :border => "3", :bordercolor => "red", :cellpadding => "8", :width => "100%"}
+  %tr
+    %th Колличество лагерей
+    %th Колличество заполненых лагерей
+    %th Колличество принятых администратором лагерей
+  %tr 
+    %td= @f.camps.size
+    %td= @f.camps.find_all{|elem| elem.is_finished == true}.size 
+    %td= @f.camps.find_all{|elem| elem.is_approved == true}.size
