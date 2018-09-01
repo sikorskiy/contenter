@@ -19,6 +19,9 @@
 
 # Ignore uploaded files in development
 /storage/*
+/latest.dump
+/config/database.yml
+
 
 /node_modules
 /yarn-error.log
