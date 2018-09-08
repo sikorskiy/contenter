@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get  "/users/index", to: "users#index"
   get  "/users/show", to: "users#show"
   devise_for :users
+  
   root to: 'camps#index'
   post 'camps/autosave', to: 'camps#autosave'
 end
