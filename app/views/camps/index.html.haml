@@ -2,6 +2,7 @@
 
 - if current_user.is_admin?
 
+  = link_to "Статистика сайта", "camp/statistic"
   = link_to "Список пользователей", "/users/index"  
   = form_tag camps_path, method: :get do
     .form-group
@@ -9,6 +10,6 @@
       = select_tag :user_ids, options_from_collection_for_select(User.all.order(:name), :id, :name, params[:user_ids]), multiple: true, class: "form-control form-control-sm js-select"
     = submit_tag "Найти пользователя", name: nil, class: "btn btn-primary btn-sm"
 
-= link_to "Статистика сайта", "camp/statistic"
+
 = link_to "Создать новый", new_camp_path
 = render @camps

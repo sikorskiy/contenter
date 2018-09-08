@@ -19,7 +19,6 @@
 
 # Ignore uploaded files in development
 /storage/*
-latest.dump
 /config/database.yml
 
 

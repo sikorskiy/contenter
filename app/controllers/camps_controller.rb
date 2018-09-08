@@ -1,7 +1,7 @@
 class CampsController < ApplicationController
   before_action :authenticate_user!
   def check
-    @check = Camp.find_by_id(rand(Camp.all.size))
+    @check = Camp.find_by_id(rand(Camp.all.size-1)+1)
   end 
   def index
     q = params[:user_ids].blank? ? Camp.all : Camp.where('user_id in (?)', params[:user_ids])
