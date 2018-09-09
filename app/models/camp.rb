@@ -30,5 +30,40 @@ class Camp < ApplicationRecord
     end
     camp.first
   end
+ def fullness
+  score = 0
+  max_score = 37
+  score +=1 unless presentation.nil?
+  score +=2 unless preview.blank?
+  score +=2 unless program.blank?
+  score +=2 unless study.blank?
+  score +=2 unless schedule.blank?
+  score +=2 unless accommodation.blank?
+  score +=1 unless meal.blank?
+  score +=2 unless security.blank?
+  score +=1 unless seasonships.blank?
+  score +=1 unless camp_categories.blank?
+  score +=1 unless pricing.blank?
+  score +=1 unless adds.blank?
+  score +=1 unless latitude.blank?
+  score +=1 unless longitude.blank?
+  score +=1 unless geotags.blank?
+  score +=1 unless starting_age.blank?
+  score +=1 unless finish_age.blank?
+  score +=1 unless foundation_year.blank?
+  score +=1 unless kids_in_camp.blank?
+  score +=1 unless kids_in_group.blank?
+  score +=1 unless leaders_per_group.blank?
+  score +=1 unless promo_day.nil?
+  score +=1 unless photos.blank?
+  score +=1 unless video_links.blank?
+  score +=2 unless group_leader_anounce.blank?
+  score +=2 unless group_leaders.blank?
+  score +=2 unless reviews.blank?
+  score +=1 unless is_finished.nil?
+  full = score.to_f/max_score
+  fl = full * 100
+  return fl.to_i
+ end
 
 end

@@ -2,6 +2,11 @@
   = @camp.name
 %p.font-weight-light.no_margin
   %strong
+    Заполненость: 
+  = @camp.fullness.to_s + "%"  
+    
+%p.font-weight-light.no_margin
+  %strong
     Организация:
   = @camp.company.name
 - if current_user.is_admin?
@@ -185,3 +190,5 @@
 %p.font-weight-light.no_margin
   %strong Анкета окончена:
   = @camp.is_finished ? 'Да' : 'Нет'
+%p.font-weight-bold
+  = link_to 'Edit', edit_camp_path(@camp)
