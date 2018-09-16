@@ -13,13 +13,7 @@ class CampsController < ApplicationController
   end
 
   def statistics
-    @camps = Camp.all
-    fscore = 0
-    ascore = 0
-    @camps.each do |f| 
-      fscore + 1 unless f.is_finished.nil?
-      ascore + 1 unless f.is_approved.blank?
-    end
+    
   end
 
   def new

@@ -19,6 +19,9 @@
               = link_to 'Новый лагерь', new_camp_path
           %li
             = link_to 'Все лагеря', camps_path
+          %li
+            - if current_user.is_admin?
+              = link_to 'Статистика', camp_statistics_path
       %ul.nav.navbar-nav.navbar-right
         %li.dropdown
           %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
