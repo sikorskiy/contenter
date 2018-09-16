@@ -12,6 +12,16 @@ class CampsController < ApplicationController
     @camp.update_attributes(current_user.is_admin? ? camp_full_params : camp_content_params)
   end
 
+  def statistics
+    @camps = Camp.all
+    fscore = 0
+    ascore = 0
+    @camps.each do |f| 
+      fscore + 1 unless f.is_finished.nil?
+      ascore + 1 unless f.is_approved.blank?
+    end
+  end
+
   def new
     if current_user.is_admin?
       @camp = Camp.new
@@ -62,6 +72,7 @@ class CampsController < ApplicationController
     end
 
   end
+
 
   private
 

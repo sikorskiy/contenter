@@ -65,5 +65,4 @@ class Camp < ApplicationRecord
   fl = full * 100
   return fl.to_i
  end
-
 end
