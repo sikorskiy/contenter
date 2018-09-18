@@ -5,6 +5,7 @@ class BadgesController < ApplicationController
 
   def create
     @badge = Badge.create(badges_params)
+    redirect_to badge_path(@badge)
   end
 
   def index
