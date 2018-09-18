@@ -4,6 +4,10 @@
   %strong
     Заполненость: 
   = @camp.fullness.to_s + "%"  
+%p.font-weight-light.no_margin
+  %strong
+    Кол-во лагерей.
+    = Camp.count
     
 %p.font-weight-light.no_margin
   %strong
