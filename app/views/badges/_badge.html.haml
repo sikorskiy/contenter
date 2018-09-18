@@ -1,0 +1,12 @@
+.row
+  .col-md-12
+    %h2.text-center= badge.name
+.row
+  .col-md-12.text-center
+    = image_tag badge.main_picture, style: 'width: 50%; height: auto;'
+.row
+  .col-md-12.text-center
+    = badge.description
+.row
+  .col-md-12.text-right
+    = link_to 'Edit', edit_badge_path(badge)

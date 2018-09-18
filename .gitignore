@@ -28,7 +28,7 @@
 .idea/
 latest.dump
 latest.dump.1
-config/database.yml
+/config/database.yml
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
