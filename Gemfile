@@ -42,9 +42,7 @@ gem 'jquery-rails'
 gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped', branch: 'bootstrap4'
 gem 'simple_form'
 gem 'select2-rails'
-gem 'mini_magick', '~> 4.3'
-gem 'fog-aws'
-gem 'aws-sdk'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

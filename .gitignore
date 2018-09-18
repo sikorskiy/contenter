@@ -34,3 +34,6 @@ latest.dump.1
 /config/master.key
 latest.dump
 database.yml
+
+# Ignore application configuration
+/config/application.yml
