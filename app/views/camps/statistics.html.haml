@@ -1,0 +1,12 @@
+%p.font-weight-light.no_margin
+  %strong
+    Количество лагерей:
+    = Camp.count
+%p.font-weight-light.no_margin
+  %strong
+    Количество законченных лагерей:
+    = Camp.where(is_finished: 1).count
+%p.font-weight-light.no_margin
+  %strong
+    Количество принятых лагерей:
+    = Camp.where(is_approved: 1).count
