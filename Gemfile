@@ -42,8 +42,7 @@ gem 'jquery-rails'
 gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped', branch: 'bootstrap4'
 gem 'simple_form'
 gem 'select2-rails'
-gem 'mini_magick', '~> 4.3'
-gem 'fog-aws'
+gem 'image_processing', '~> 1.2'
 gem "aws-sdk-s3", require: false
 
 group :development, :test do
