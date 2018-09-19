@@ -13,7 +13,7 @@
         = f.text_area :admin_comment, class: 'form-control', readonly: 'true'
       .panel.panel-danger
         .panel-heading
-          %h3.panel-title
+          %h5.panel-title
             = link_to 'Заполняется администратором (показать/скрыть)', '#', id: 'hiding-link'
         #admin-panel.panel-body{style: 'display: none;'}
           .form-group
@@ -58,7 +58,7 @@
             = f.text_field :pd_url, class: 'form-control', readonly: 'true'
       .panel.panel-info
         .panel-heading
-          %h3.panel-title
+          %h5.panel-title
             Заполняется Вами
         .panel-body
           .form-group
@@ -157,7 +157,7 @@
           .form-group
             %label Заполнение анкеты завершено
             = f.check_box :is_finished
-      = f.submit 'Сохранить форму', class: 'btn btn-info'
+      = f.submit 'Сохранить форму', class: 'btn btn-outline-primary'
 
 
 

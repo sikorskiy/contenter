@@ -15,4 +15,5 @@
         %li Camps approved: #{Camp.where(user: user, is_approved: 1).count || 'No info'}
     .col-md-4
       %ul.list-unstyled
-        %li Current camp payment: #{user.status.pay_coefficient*100}р.
+        %li Current status camp payment: #{user.status.pay_coefficient*100}р.
+        %li Next status camp payment: #{Status.find(user.status.next_status_id).pay_coefficient*100}р.
