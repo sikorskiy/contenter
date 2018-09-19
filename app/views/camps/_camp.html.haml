@@ -1,27 +1,21 @@
-%p.font-weight-light.no_margin
-  %strong
-    Заполненость: 
-  = camp.fullness.to_s + "%"  
-%p.font-weight-light.no_margin
-  %strong ID лагеря:
-  = camp.id
-%p.font-weight-light.no_margin
-  %strong Название лагеря:
-  = camp.name
-%p.font-weight-light.no_margin
-  %strong Анкета окончена:
-  = camp.is_finished ? 'Да' : 'Нет'
-%p.font-weight-light.no_margin
-  %strong
-    Анкета прошла проверку администратора:
-  %span{style: "color: #{camp.is_approved.blank? ? 'red': 'green'}"}
-    = camp.is_approved.blank? ? 'Нет' : 'Да'
-- if current_user.is_admin?
-  %p.font-weight-light.no_margin
-    %strong
-      Контент-менеджер:
-    = camp.user.name
-%p.font-weight-bold
-  = link_to 'Edit', edit_camp_path(camp)
-  = link_to 'Show', camp_path(camp)
-  -# = link_to "Delete", camp_path(camp), method: :delete
+
+.card{style: 'margin: 20px 0px;'}
+  .card-header Название: #{camp.name}. id: #{camp.id}
+  .card-body
+    %p.card-text
+      Заполненность:
+      = camp.fullness.to_s + "%"
+    %p.card-text
+      Анкета закончена:
+      = camp.is_finished ? 'Да' : 'Нет'
+    %p.card-text
+      Анкета прошла проверку администратора:
+      %span{style: "color: #{camp.is_approved.blank? ? 'red': 'green'}"}
+        = camp.is_approved.blank? ? 'Нет' : 'Да'
+    - if current_user.is_admin?
+      %p.card-text
+        Контент-менеджер:
+        = camp.user.name
+    = link_to 'Edit', edit_camp_path(camp), class: 'card-link'
+    = link_to 'Show', camp_path(camp), class: 'card-link'
+

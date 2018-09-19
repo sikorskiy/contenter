@@ -35,13 +35,13 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
-gem 'bootstrap-sass'
 gem 'haml'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped', branch: 'bootstrap4'
 gem 'simple_form'
 gem 'select2-rails'
+gem 'bootstrap', '~> 4.0.0'
 gem 'image_processing', '~> 1.2'
 gem "aws-sdk-s3", require: false
 

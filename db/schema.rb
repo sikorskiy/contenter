@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_16_110300) do
+ActiveRecord::Schema.define(version: 2018_09_19_060047) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -205,6 +205,18 @@ ActiveRecord::Schema.define(version: 2018_09_16_110300) do
     t.index ["season_type_id"], name: "index_seasonships_on_season_type_id"
   end
 
+  create_table "statuses", force: :cascade do |t|
+    t.bigint "badge_id"
+    t.string "name"
+    t.float "pay_coefficient"
+    t.integer "length"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "prev_status_id"
+    t.integer "next_status_id"
+    t.index ["badge_id"], name: "index_statuses_on_badge_id"
+  end
+
   create_table "taggizations", force: :cascade do |t|
     t.bigint "camp_id"
     t.bigint "geotag_id"
@@ -235,11 +247,15 @@ ActiveRecord::Schema.define(version: 2018_09_16_110300) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.bigint "user_role_id"
+    t.bigint "status_id"
+    t.integer "rating"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["status_id"], name: "index_users_on_status_id"
     t.index ["user_role_id"], name: "index_users_on_user_role_id"
   end
 
   add_foreign_key "taggizations", "camps"
   add_foreign_key "taggizations", "geotags"
+  add_foreign_key "users", "statuses"
 end

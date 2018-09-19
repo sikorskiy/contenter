@@ -1,48 +1,32 @@
-%nav.navbar.navbar-default
-  .container-fluid
-    / Brand and toggle get grouped for better mobile display
-    .navbar-header
-      %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      = link_to "Contenter", root_path, class: "navbar-brand"
-    / Collect the nav links, forms, and other content for toggling
-    #bs-example-navbar-collapse-1.collapse.navbar-collapse
-      %ul.nav.navbar-nav
-        - if user_signed_in?
-          %li
-            - if current_user.is_admin?
-              = link_to 'Компании', companies_path
-            - else
-              = link_to 'Новый лагерь', new_camp_path
-          %li
-            = link_to 'Все лагеря', camps_path
-          %li
-            - if current_user.is_admin?
-              = link_to 'Статистика', camp_statistics_path
-      %ul.nav.navbar-nav.navbar-right
-        %li.dropdown
-          %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-            - if user_signed_in?
-              = current_user.name || current_user.email
-              %span.caret
-              %ul.dropdown-menu
-                %li
-                  = link_to 'Edit profile', edit_user_registration_path
-                %li
-                  %a{:href => "#"} Another action
-                %li
-                  %a{:href => "#"} Something else here
-                %li.divider{:role => "separator"}
-                %li
-                  = link_to 'Log out', destroy_user_session_path, method: :delete
-            - else
-              Log in
-              %span.caret
-              %ul.dropdown-menu
-                %li
-                  = link_to 'Sign up', new_user_registration_path
-                %li
-                  = link_to 'Log in', new_user_session_path
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  = link_to "Contenter", root_path, class: "navbar-brand"
+  %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+    %span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    %ul.navbar-nav.mr-auto
+      - if user_signed_in?
+        %li.nav-item.active
+          - if current_user.is_admin?
+            = link_to 'Компании', companies_path, class: 'nav-link'
+          - else
+            = link_to 'Новый лагерь', new_camp_path, class: 'nav-link'
+        %li.nav-item
+          = link_to 'Все лагеря', camps_path, class: 'nav-link'
+        %li.nav-item
+          - if current_user.is_admin?
+            = link_to 'Статистика', camp_statistics_path, class: 'nav-link'
+    %ul.navbar-nav.ml-auto
+      %li.nav-item.dropdown
+        %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+          = user_signed_in? ? (current_user.name || current_user.email) : 'Log in'
+        .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
+          - if user_signed_in?
+            = link_to 'Edit profile', edit_user_registration_path, class: 'dropdown-item'
+            = link_to 'Show profile', current_user, class: 'dropdown-item'
+            .dropdown-divider
+            = link_to 'Log out', destroy_user_session_path, method: :delete, class: 'dropdown-item'
+          - else
+            = link_to 'Sign up', new_user_registration_path, class: 'dropdown-item'
+            = link_to 'Log in', new_user_session_path, class: 'dropdown-item'
+      %li
+        = image_tag Badge.first.main_picture, class: "rounded-circle align-middle border", style: 'width: 40px; height: 40px;'

@@ -8,7 +8,9 @@ class User < ApplicationRecord
 
   belongs_to :user_role
   has_many :camps
+  belongs_to :status
   before_validation :default_role
+
 
   def is_admin?
     user_role.name == "admin"
@@ -19,6 +21,8 @@ class User < ApplicationRecord
 
   def default_role
     self.user_role ||= UserRole.find_by_name('user')
+    self.status ||= Status.first
+    self.rating ||= 0
   end
 
 end

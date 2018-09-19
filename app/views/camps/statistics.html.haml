@@ -10,3 +10,5 @@
   %strong
     Количество принятых лагерей:
     = Camp.where(is_approved: 1).count
+
+= render User.all
