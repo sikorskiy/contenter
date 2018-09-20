@@ -12,10 +12,12 @@
       Анкета прошла проверку администратора:
       %span{style: "color: #{camp.is_approved.blank? ? 'red': 'green'}"}
         = camp.is_approved.blank? ? 'Нет' : 'Да'
-    - if current_user.is_admin?
-      %p.card-text
-        Контент-менеджер:
-        = camp.user.name
+    %p.card-text
+      Контент-менеджер:
+      = camp.user.name
+    %p.card-text
+      Итерация правок:
+      = camp.iteration.text || 'No info'
     = link_to 'Edit', edit_camp_path(camp), class: 'card-link'
     = link_to 'Show', camp_path(camp), class: 'card-link'
 

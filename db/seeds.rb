@@ -7,11 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 #
 
-Status.create(badge: Badge.first, length: 10, pay_coefficient: 1)
-Status.create(badge: Badge.find_by(name: 'Hedgehog'), length: 10, pay_coefficient: 1.02, prev_status_id: Status.first.id)
+Iteration.find_or_create_by(text: 'Не было проверки администратором')
+Iteration.find_or_create_by(text: 'Первая итерация исправлений')
+Iteration.find_or_create_by(text: 'Вторая итерация исправлений')
+Iteration.find_or_create_by(text: 'Третья и более итерация исправлений')
+Iteration.find_or_create_by(text: 'Принято без исправлений')
+Iteration.find_or_create_by(text: 'Другое')
 
-
-User.all.each do |u|
-  u.status = Status.first
-  u.save
+Camp.find_each do |c|
+  c.iteration = Iteration.find_by(text: 'Не было проверки администратором')
+  c.save
 end

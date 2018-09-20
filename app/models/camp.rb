@@ -12,6 +12,7 @@ class Camp < ApplicationRecord
   has_many :taggizations
   has_many :geotags, through: :taggizations
   belongs_to :user
+  belongs_to :iteration
 
   accepts_nested_attributes_for :reviews, allow_destroy: true
   accepts_nested_attributes_for :group_leaders, allow_destroy: true

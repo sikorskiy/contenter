@@ -3,22 +3,19 @@
 %p.font-weight-light.no_margin
   %strong
     Заполненость: 
-  = @camp.fullness.to_s + "%"  
-%p.font-weight-light.no_margin
-  %strong
-    Кол-во лагерей.
-    = Camp.count
-    
+  = @camp.fullness.to_s + "%"
 %p.font-weight-light.no_margin
   %strong
     Организация:
   = @camp.company.name
-- if current_user.is_admin?
-  %p.font-weight-light.no_margin
-    %strong
-      Контент-менеджер:
-    = @camp.user.name
-
+%p.font-weight-light.no_margin
+  %strong
+    Контент-менеджер:
+  = @camp.user.name
+%p.font-weight-light.no_margin
+  %strong
+    Итерация правок:
+  = @camp.iteration.text || 'No info'
 %p.font-weight-light.no_margin
   %strong
     Анкета прошла проверку администратора:
@@ -105,7 +102,7 @@
           %strong Конец смены
           = shift.finish
         %p.font-weight-light.no_margin
-          %strong Начало смены
+          %strong Цена
           = shift.price
         %p.font-weight-light.no_margin
           %strong Программа смены

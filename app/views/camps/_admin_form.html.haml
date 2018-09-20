@@ -54,6 +54,9 @@
             %label Комментарий администратора
             = f.text_area :admin_comment, class: 'form-control', rows: '5'
           .form-group
+            %label Итерация исправлений
+            = f.collection_select :iteration_id, Iteration.all.order(:id), :id, :text, {}, {class: 'js-select'}
+          .form-group
             %label Анкета прошла проверку администратора
             = f.check_box :is_approved
       .panel.panel-info

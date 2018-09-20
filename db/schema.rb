@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_19_060047) do
+ActiveRecord::Schema.define(version: 2018_09_20_170112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,7 +124,9 @@ ActiveRecord::Schema.define(version: 2018_09_19_060047) do
     t.string "admin_comment"
     t.boolean "is_approved"
     t.boolean "has_incamp_price"
+    t.bigint "iteration_id"
     t.index ["company_id"], name: "index_camps_on_company_id"
+    t.index ["iteration_id"], name: "index_camps_on_iteration_id"
     t.index ["user_id"], name: "index_camps_on_user_id"
   end
 
@@ -170,6 +172,13 @@ ActiveRecord::Schema.define(version: 2018_09_19_060047) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["camp_id"], name: "index_group_leaders_on_camp_id"
+  end
+
+  create_table "iterations", force: :cascade do |t|
+    t.string "text"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "review_roles", force: :cascade do |t|
@@ -255,6 +264,7 @@ ActiveRecord::Schema.define(version: 2018_09_19_060047) do
     t.index ["user_role_id"], name: "index_users_on_user_role_id"
   end
 
+  add_foreign_key "camps", "iterations"
   add_foreign_key "taggizations", "camps"
   add_foreign_key "taggizations", "geotags"
   add_foreign_key "users", "statuses"
