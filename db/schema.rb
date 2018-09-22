@@ -10,10 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_11_114431) do
+ActiveRecord::Schema.define(version: 2018_09_20_170112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "badges", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "camp_categories", force: :cascade do |t|
     t.string "name"
@@ -96,7 +124,9 @@ ActiveRecord::Schema.define(version: 2018_08_11_114431) do
     t.string "admin_comment"
     t.boolean "is_approved"
     t.boolean "has_incamp_price"
+    t.bigint "iteration_id"
     t.index ["company_id"], name: "index_camps_on_company_id"
+    t.index ["iteration_id"], name: "index_camps_on_iteration_id"
     t.index ["user_id"], name: "index_camps_on_user_id"
   end
 
@@ -144,6 +174,13 @@ ActiveRecord::Schema.define(version: 2018_08_11_114431) do
     t.index ["camp_id"], name: "index_group_leaders_on_camp_id"
   end
 
+  create_table "iterations", force: :cascade do |t|
+    t.string "text"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "review_roles", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -177,6 +214,18 @@ ActiveRecord::Schema.define(version: 2018_08_11_114431) do
     t.index ["season_type_id"], name: "index_seasonships_on_season_type_id"
   end
 
+  create_table "statuses", force: :cascade do |t|
+    t.bigint "badge_id"
+    t.string "name"
+    t.float "pay_coefficient"
+    t.integer "length"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "prev_status_id"
+    t.integer "next_status_id"
+    t.index ["badge_id"], name: "index_statuses_on_badge_id"
+  end
+
   create_table "taggizations", force: :cascade do |t|
     t.bigint "camp_id"
     t.bigint "geotag_id"
@@ -207,11 +256,16 @@ ActiveRecord::Schema.define(version: 2018_08_11_114431) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.bigint "user_role_id"
+    t.bigint "status_id"
+    t.integer "rating"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["status_id"], name: "index_users_on_status_id"
     t.index ["user_role_id"], name: "index_users_on_user_role_id"
   end
 
+  add_foreign_key "camps", "iterations"
   add_foreign_key "taggizations", "camps"
   add_foreign_key "taggizations", "geotags"
+  add_foreign_key "users", "statuses"
 end

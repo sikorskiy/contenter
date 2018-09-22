@@ -28,7 +28,17 @@
 /public/assets
 .byebug_history
 .idea/
+latest.dump
+latest.dump.1
+/config/database.yml
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+<<<<<<< HEAD
 
+=======
+latest.dump
+database.yml
+
+# Ignore application configuration
+/config/application.yml

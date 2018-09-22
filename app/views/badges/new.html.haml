@@ -1,0 +1,14 @@
+%h1.text-center New badge creating
+.row
+  .col-md-12
+    = form_for @badge do |f|
+      .form-group
+        %label Badge name
+        = f.text_field :name, class: 'form-control'
+      .form-group
+        %label Badge description
+        = f.text_area :description, class: 'form-control'
+      .form-group
+        %label Upload image
+        = f.file_field :main_picture, class: 'form-control'
+      = f.submit 'Save badge', class: 'btn btn-info'

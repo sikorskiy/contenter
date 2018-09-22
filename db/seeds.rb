@@ -7,43 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 #
 
-%w[Зима(?) Лето(?) Весна(?) Осень(?) Зима Лето Весна Осень].each do |name|
-  SeasonType.find_or_create_by(name: name)
+Iteration.find_or_create_by(text: 'Не было проверки администратором')
+Iteration.find_or_create_by(text: 'Первая итерация исправлений')
+Iteration.find_or_create_by(text: 'Вторая итерация исправлений')
+Iteration.find_or_create_by(text: 'Третья и более итерация исправлений')
+Iteration.find_or_create_by(text: 'Принято без исправлений')
+Iteration.find_or_create_by(text: 'Другое')
+
+Camp.find_each do |c|
+  c.iteration = Iteration.find_by(text: 'Не было проверки администратором')
+  c.save
 end
-
-%w[Английский Немецкий Французский Хоккейный Конный Теннисный Православный
-  Баскетбольный Плавание Фитнес Танцевальный Волейбольный Балетный Фигурное\ катание
-  Художественная\ гимнастика Для\ похудения Физико-математический Компьютерный
-  Робототехнический Бизнес Шахматный Программирование Еврейский Кадетский Патриотический
-  Театральный Художественный Музыкальный
-  Киберспортивный	Научный	Профориентационный	Биологический	Исторический
-  Медицинский	Физический	Химический	Архитектурный	Логопедический	Психологический
-  Пионерский	Тематический	Профильный	Палаточный	Для\ трудных	Для\ инвалидов
-  Экологический	Туристический	Международный	Волонтерский	Семейный	Городской
-  Выходного\ дня	Для\ девочек	Для\ мальчиков
-  Мусульманский Математический Футбольный].each do |name|
-  CampCategory.find_or_create_by(name: name)
-end
-
-%w[Родитель Мама Школьник Бабушка Дедушка Папа].each do |name|
-  ReviewRole.find_or_create_by(name: name)
-end
-
-
-%w[admin user].each do |name|
-  UserRole.find_or_create_by(name: name)
-end
-
-%w[Сочи Анапа Краснодарский\ край].each do |name|
-  Geotag.find_or_create_by(name: name)
-end
-
-Company.create({name: 'ООО "МБА"', entity: 'ООО "МБА"'})
-Company.create({name: 'ООО «Красная поляна Тревел»', entity: 'ООО «Красная поляна Тревел»'})
-Company.create({name: 'ООО "Гардарика"', entity: 'ООО "Гардарика"'})
-Company.create({name: 'ООО "Реликт Групп"', entity: 'ООО "Реликт Групп"'})
-Company.create({name: 'ООО "ВТОЧКУ"', entity: 'ООО "ВТОЧКУ"'})
-Company.create({name: 'ЦОО "Нетология Групп"', entity: 'ЦОО "Нетология Групп"'})
-Company.create({name: 'ООО "Национальный центр профессиональной ориентации"', entity: 'ООО "Национальный центр профессиональной ориентации"'})
-Company.create({name: 'ООО "Рекалето"', entity: 'ООО "Рекалето"'})
-Company.create({name: 'ООО "ФК "Штутгарт"', entity: 'ООО "ФК "Штутгарт"'})

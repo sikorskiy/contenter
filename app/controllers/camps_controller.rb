@@ -14,6 +14,10 @@ class CampsController < ApplicationController
     @camp.update_attributes(current_user.is_admin? ? camp_full_params : camp_content_params)
   end
 
+  def statistics
+    
+  end
+
   def new
     if current_user.is_admin?
       @camp = Camp.new
@@ -47,7 +51,11 @@ class CampsController < ApplicationController
     @camp = Camp.find(params[:id])
     params[:is_finished] = @camp.is_finished if current_user.is_admin? #only for content person is ok to change is_finished
     @camp.update_attributes(current_user.is_admin? ? camp_full_params : camp_content_params)
-    redirect_to camps_path
+    redirect_to camp_path @camp
+  end
+
+  def show
+    @camp = Camp.find(params[:id])
   end
 
   def edit
@@ -60,6 +68,7 @@ class CampsController < ApplicationController
     end
 
   end
+
 
   private
 
