@@ -6,4 +6,8 @@ class UsersController < ApplicationController
   def index
     @u = User.all
   end
+  def check_camp
+   @с_user = User.find_by_id(params[:user_id])
+
+  end
 end
