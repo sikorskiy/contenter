@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  camp: one
+  week_start: MyString
+  is_finished: false
+  is_approved: false
+
+two:
+  user: two
+  camp: two
+  week_start: MyString
+  is_finished: false
+  is_approved: false
