@@ -13,7 +13,7 @@
         %li Camps assigned: #{Camp.where(user: user).count || 'No info'}
         %li Camps finished: #{Camp.where(user: user, is_finished: 1).count || 'No info'}
         %li Camps approved: #{Camp.where(user: user, is_approved: 1).count || 'No info'}
-        %li Last sign in at: #{user.last_sign_in_at || 'No info'}
+        %li Last sign in at: #{user.current_sign_in_at || 'No info'}
     .col-md-4
       %ul.list-unstyled
         %li Current status camp payment: #{user.status.pay_coefficient*100}р.
