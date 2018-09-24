@@ -7,7 +7,7 @@ end
 
 task :update_column => :environment do
   WeekResult.find_each do |wr|
-    wr.day = Date.today
+    wr.day = Date.today - 1
     wr.save
   end
   puts "done."
