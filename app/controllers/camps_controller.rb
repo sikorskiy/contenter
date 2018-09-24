@@ -48,7 +48,7 @@ class CampsController < ApplicationController
   def update
     @camp = Camp.find(params[:id])
     params[:is_finished] = @camp.is_finished if current_user.is_admin? #only for content person is ok to change is_finished
-    @camp.update_attributes(current_user.is_admin? ? camp_full_params : camp_content_params) if params[:version_number].to_i > @camp.version_number
+    @camp.update_attributes(current_user.is_admin? ? camp_full_params : camp_content_params) if params[:version_number].to_i > @camp.version_number || current_user.is_admin?
     redirect_to camp_path @camp
   end
 
