@@ -4,3 +4,8 @@ task :save_week_results => :environment do
   Camp.find_each {|c| WeekResult.create(camp: c, user: c.user, is_approved: c.is_approved, is_finished: c.is_finished, week_start: (Date.today-1).to_s)}
   puts "done."
 end
+
+task :update_column => :environment do
+  WeekResult.find_each { |wr| wr.day = Date.today.day }
+  puts "done."
+end
