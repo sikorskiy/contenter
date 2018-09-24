@@ -6,9 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 #
+CampCategory.find_or_create_by(name: 'Творческий')
+CampCategory.find_or_create_by(name: 'Экскурсионный')
 
-Status.first.update_attributes(number: 1, whole_length: 10)
-Status.find(Status.first.next_status_id).update_attributes(number: 1, whole_length: 20)
 
 Iteration.find_or_create_by(text: 'Не было проверки администратором')
 Iteration.find_or_create_by(text: 'Первая итерация исправлений')
