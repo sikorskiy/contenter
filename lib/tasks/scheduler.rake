@@ -6,6 +6,9 @@ task :save_week_results => :environment do
 end
 
 task :update_column => :environment do
-  WeekResult.find_each { |wr| wr.day = Date.today }
+  WeekResult.find_each do |wr|
+    wr.day = Date.today
+    wr.save
+  end
   puts "done."
 end
