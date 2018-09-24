@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_24_030226) do
+ActiveRecord::Schema.define(version: 2018_09_24_032037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -267,7 +267,6 @@ ActiveRecord::Schema.define(version: 2018_09_24_030226) do
   create_table "week_results", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "camp_id"
-    t.string "week_start"
     t.boolean "is_finished"
     t.boolean "is_approved"
     t.datetime "created_at", null: false
