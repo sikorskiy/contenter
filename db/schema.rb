@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_24_050757) do
+ActiveRecord::Schema.define(version: 2018_09_24_073151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(version: 2018_09_24_050757) do
     t.boolean "is_approved"
     t.boolean "has_incamp_price"
     t.bigint "iteration_id"
+    t.integer "version_number", default: 0
     t.index ["company_id"], name: "index_camps_on_company_id"
     t.index ["iteration_id"], name: "index_camps_on_iteration_id"
     t.index ["user_id"], name: "index_camps_on_user_id"

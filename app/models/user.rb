@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   belongs_to :user_role
   has_many :camps
+  has_many :rating_changes
+
   belongs_to :status
   before_validation :default_role
 

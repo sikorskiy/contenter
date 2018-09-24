@@ -2,3 +2,11 @@
   = render 'admin_form'
 - else
   = render 'content_form'
+
+:javascript
+  function save(event) {
+    event.target.form['version_number'].value++;
+    var request = new XMLHttpRequest();
+    request.open(event.target.form.method, event.target.form.action);
+    request.send(new FormData(event.target.form));
+  }

@@ -18,6 +18,7 @@ Iteration.find_or_create_by(text: 'Принято без исправлений'
 Iteration.find_or_create_by(text: 'Другое')
 
 RatingChangeType.find_or_create_by(name: 'Завершение работы с лагерем') { |r| r.change = 1 }
+RatingChangeType.find_or_create_by(name: 'Ура! Новый статус!') { |r| r.change = 0 }
 RatingChangeType.find_or_create_by(name: 'Лагерь зачтен администратором с первой попытки') { |r| r.change = 3 }
 RatingChangeType.find_or_create_by(name: 'Лагерь зачтен администратором с 1-ой итерации правок') { |r| r.change = 2 }
 RatingChangeType.find_or_create_by(name: 'Лагерь зачтен администратором со 2-ой и более итерации правок') { |r| r.change = 1 }

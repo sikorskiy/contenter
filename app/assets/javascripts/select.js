@@ -30,32 +30,6 @@ document.addEventListener("turbolinks:load", function() { //don't know why, but 
         });
         return event.preventDefault();
     });
-/*
-    $(function() {
-        if ($('#big_field').val().length > 0) {
-            setTimeout(autoSavePost, 6000);
-            console.log('Hello');
-        }
-    });
-
-
-    function autoSavePost() {
-        $.ajax({
-            type: "POST",
-            url: "/camps/autosave",
-            data: $("#edit_camp_1").serialize(),
-            dataType: "script",
-            success: function(data) {
-                console.log(data);
-            }
-        });
-        setTimeout(autoSavePost, 6000);
-    } */
-
-});
-
-$(document).ready(function(){
-
 
 });
 
