@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  rating_change_type: one
+  comment: MyString
+  camp_id: 1
+
+two:
+  user: two
+  rating_change_type: two
+  comment: MyString
+  camp_id: 1

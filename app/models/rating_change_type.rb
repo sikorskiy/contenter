@@ -1,0 +1,2 @@
+class RatingChangeType < ApplicationRecord
+end

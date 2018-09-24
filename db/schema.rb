@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_24_032037) do
+ActiveRecord::Schema.define(version: 2018_09_24_050757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -181,6 +181,25 @@ ActiveRecord::Schema.define(version: 2018_09_24_032037) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "rating_change_types", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "change"
+  end
+
+  create_table "rating_changes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "rating_change_type_id"
+    t.string "comment"
+    t.integer "camp_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rating_change_type_id"], name: "index_rating_changes_on_rating_change_type_id"
+    t.index ["user_id"], name: "index_rating_changes_on_user_id"
+  end
+
   create_table "review_roles", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -223,6 +242,8 @@ ActiveRecord::Schema.define(version: 2018_09_24_032037) do
     t.datetime "updated_at", null: false
     t.integer "prev_status_id"
     t.integer "next_status_id"
+    t.integer "whole_length"
+    t.integer "number"
     t.index ["badge_id"], name: "index_statuses_on_badge_id"
   end
 
@@ -277,6 +298,8 @@ ActiveRecord::Schema.define(version: 2018_09_24_032037) do
   end
 
   add_foreign_key "camps", "iterations"
+  add_foreign_key "rating_changes", "rating_change_types"
+  add_foreign_key "rating_changes", "users"
   add_foreign_key "taggizations", "camps"
   add_foreign_key "taggizations", "geotags"
   add_foreign_key "users", "statuses"
