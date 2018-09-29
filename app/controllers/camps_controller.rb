@@ -7,6 +7,12 @@ class CampsController < ApplicationController
     q = params[:user_ids].blank? ? Camp.all : Camp.where('user_id in (?)', params[:user_ids])
     @camps = current_user.is_admin? ? q : Camp.where('user_id = ?', current_user.id)
   end
+  def track
+    @date = Date.today
+    @camps_maded = Camp.all
+    @users_maded = Array.new
+      @camps_maded.each { |e| @users_maded.push(e.user)}
+  end
 
   def autosave
     @camp = Camp.find(params[:camp_id])

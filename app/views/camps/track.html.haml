@@ -1,0 +1,17 @@
+%p Еженедельная статистика
+
+%p
+%table.table.table-condenced{:bgcolor => "white", :border => "3", :bordercolor => "red", :cellpadding => "8", :width => "100%"}
+  %tr
+    %th Пользователь
+    %th Неделя
+    %th Лагерь
+    %th Закончено\не закончено
+    %th Статус подтверждения администратором
+  - @camps_maded.each do |camp| 
+    %tr 
+      %td= camp.user.name
+      %td= @date
+      %td= camp.name
+      %td= camp.is_finished
+      %td= camp.is_approved

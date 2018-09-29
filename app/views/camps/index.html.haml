@@ -10,12 +10,10 @@
     .form-group
       = label_tag :user_ids, "Отфильтровать по пользователям"
       = select_tag :user_ids, options_from_collection_for_select(User.all.order(:name), :id, :name, params[:user_ids]), multiple: true, class: "form-control form-control-sm js-select"
-<<<<<<< HEAD
+
     = submit_tag "Найти пользователя", name: nil, class: "btn btn-primary btn-sm"
 
 
 = link_to "Создать новый", new_camp_path
-=======
-    = submit_tag "Найти пользователя", name: nil, class: "btn btn-outline-primary btn-sm"
->>>>>>> ddd3020b0e3bca43eb5bc40aaa4117c6bc116a79
+
 = render @camps
