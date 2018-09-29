@@ -7,4 +7,7 @@ module ApplicationHelper
     end
     link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub('\n','&#xA')})
   end
+  def traks
+  Camp.all.each {|camp| @camps_maded.push(camp) if !camp.user = current_user}
+end
 end

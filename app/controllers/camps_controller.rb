@@ -8,10 +8,9 @@ class CampsController < ApplicationController
     @camps = current_user.is_admin? ? q : Camp.where('user_id = ?', current_user.id)
   end
   def track
-    @date = Date.today
-    @camps_maded = Camp.all
-    @users_maded = Array.new
-      @camps_maded.each { |e| @users_maded.push(e.user)}
+    @camps_maded = Array.new
+    #Camp.all.each {|camp| @camps_maded.push(camp) if !camp.is_approved}
+    #Camp.all.each {|camp| @camps_maded.push(camp) if !camp.user = current_user}
   end
 
   def autosave
