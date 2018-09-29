@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
   def show
-
+   @fin = 0
+   @appr = 0
+   @all = 0
     @f = current_user
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
 
   end
 

@@ -2,9 +2,9 @@
 %h1{:align => "center"} Ваши лагеря
 %table.table.table-condenced{:bgcolor => "white", :border => "3", :bordercolor => "red", :cellpadding => "8", :width => "100%"}
   %tr
-    %th Колличество лагерей
-    %th Колличество заполненых лагерей
-    %th Колличество принятых администратором лагерей
+    %th= "Колличество лагерей (на неделе #{@all})"
+    %th= "Колличество заполненых лагерей (на неделе #{@all})"
+    %th= "Колличество принятых администратором лагерей (на неделе #{@appr}"
   %tr 
     %td= @f.camps.size
     %td= @f.camps.find_all{|elem| elem.is_finished == true}.size 
