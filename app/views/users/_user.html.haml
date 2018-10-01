@@ -18,8 +18,8 @@
         %li Last sign in at: #{user.current_sign_in_at || 'No info'}
     .col-md-4
       %ul.list-unstyled
-        %li Current status camp payment: #{user.status.pay_coefficient*100}р.
-        %li Next status camp payment: #{ user.status.next_status_id.nil? ? 'No data for next status' : (Status.find_by(id: user.status.next_status_id).pay_coefficient*100).to_s + 'р.' }
+        %li Current status camp payment: #{user.status.pay_coefficient.round(0)*100}р.
+        %li Next status camp payment: #{ user.status.next_status_id.nil? ? 'No data for next status' : (Status.find_by(id: user.status.next_status_id).pay_coefficient.round(0)*100).to_s + 'р.' }
 
 %div{style: 'padding: 5px;'}
   - RatingChange.where(user: user).order(created_at: :desc).to_a.each do |r|
