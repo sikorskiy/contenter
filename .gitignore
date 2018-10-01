@@ -23,6 +23,7 @@
 /node_modules
 /yarn-error.log
 
+
 /public/assets
 .byebug_history
 .idea/
@@ -32,8 +33,9 @@ latest.dump.1
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-latest.dump
+latest.dump.2
 database.yml
+erd.pdf
 
 # Ignore application configuration
 /config/application.yml
