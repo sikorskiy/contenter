@@ -3,6 +3,9 @@
   .card-header Название: #{camp.name}. id: #{camp.id}
   .card-body
     %p.card-text
+      Организация:
+      = camp.company.name
+    %p.card-text
       Заполненность:
       = camp.fullness.to_s + "%"
     %p.card-text
