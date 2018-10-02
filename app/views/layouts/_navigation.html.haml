@@ -28,5 +28,6 @@
           - else
             = link_to 'Sign up', new_user_registration_path, class: 'dropdown-item'
             = link_to 'Log in', new_user_session_path, class: 'dropdown-item'
-      %li
-        = image_tag Badge.first.main_picture, class: "rounded-circle align-middle border", style: 'width: 40px; height: 40px;'
+      - if user_signed_in?
+        %li
+          = image_tag current_user.status.badge.main_picture, class: "rounded-circle align-middle border", style: 'width: 40px; height: 40px;'
