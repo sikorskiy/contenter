@@ -1,0 +1,32 @@
+.card{style: 'margin-top: 10px; padding: 10px 0px;'}
+  .row
+    .col-md-4
+      = image_tag user.status.badge.main_picture, style: 'width: 100%; height: auto;'
+    .col-md-4
+      %ul.list-unstyled
+        %li Name: #{user.name}
+        %li Email: #{user.email}
+        %li Status: #{user.status.badge.name || 'No status'}
+        %li Current rating: #{user.rating || 'No rating'}
+        %li Rating length: #{user.status.length || 'No data for this status'}
+        %li Next rating change: #{user.status.whole_length || 'No data for this status'}
+        %li To next rating: #{user.status.whole_length - user.rating || 'No data for this status'}
+        %li Next status: #{ user.status.next_status_id.nil? ? 'No data for next status' : (Status.find_by(id: user.status.next_status_id).badge.name || 'No data for next status')}
+        %li Camps assigned: #{Camp.where(user: user).count || 'No info'}
+        %li Camps finished: #{Camp.where(user: user, is_finished: 1).count || 'No info'}
+        %li Camps approved: #{Camp.where(user: user, is_approved: 1).count || 'No info'}
+        %li Last sign in at: #{user.current_sign_in_at || 'No info'}
+    .col-md-4
+      %ul.list-unstyled
+        %li Current status camp payment: #{(user.status.pay_coefficient*100).round(0)}р.
+        %li Next status camp payment: #{ user.status.next_status_id.nil? ? 'No data for next status' : (Status.find_by(id: user.status.next_status_id).pay_coefficient*100).round(0).to_s + 'р.' }
+
+%div{style: 'padding: 5px;'}
+  - user.camps.where(is_rated_for_approving: 1).order(created_at: :desc).to_a.each do |c|
+    .row
+      .col-md-2
+        %p.small=c.updated_at.strftime("%F, %T")
+      .col-md-8
+        %p.small=c.name
+      .col-md-2
+        %p.small=(c.pay_coefficient*100).round(2).to_s + 'р.'

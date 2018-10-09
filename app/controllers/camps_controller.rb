@@ -13,7 +13,10 @@ class CampsController < ApplicationController
   end
 
   def statistics
-    
+  end
+
+  def payments
+    @users = User.all
   end
 
   def new

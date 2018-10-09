@@ -15,6 +15,9 @@
         %li.nav-item
           - if current_user.is_admin?
             = link_to 'Статистика', camp_statistics_path, class: 'nav-link'
+        %li.nav-item
+          - if current_user.is_admin?
+            = link_to 'Выплаты', camp_payments_path, class: 'nav-link'
     %ul.navbar-nav.ml-auto
       %li.nav-item.dropdown
         %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}

@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   root to: 'camps#index'
   post 'camps/autosave', to: 'camps#autosave'
   get '/camp/statistics', to: 'camps#statistics'
+  get '/camp/payments', to: 'camps#payments'
 end
