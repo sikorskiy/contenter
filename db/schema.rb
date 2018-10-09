@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_24_073151) do
+ActiveRecord::Schema.define(version: 2018_10_09_231056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,12 +75,6 @@ ActiveRecord::Schema.define(version: 2018_09_24_073151) do
     t.index ["camp_id"], name: "index_camp_shifts_on_camp_id"
   end
 
-  create_table "camp_subcategories", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "camps", force: :cascade do |t|
     t.string "url"
     t.string "name"
@@ -126,6 +120,9 @@ ActiveRecord::Schema.define(version: 2018_09_24_073151) do
     t.boolean "has_incamp_price"
     t.bigint "iteration_id"
     t.integer "version_number", default: 0
+    t.boolean "is_rated_for_finishing"
+    t.boolean "is_rated_for_approving"
+    t.float "pay_coefficient"
     t.index ["company_id"], name: "index_camps_on_company_id"
     t.index ["iteration_id"], name: "index_camps_on_iteration_id"
     t.index ["user_id"], name: "index_camps_on_user_id"
@@ -145,18 +142,6 @@ ActiveRecord::Schema.define(version: 2018_09_24_073151) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "entity"
-  end
-
-  create_table "content_camps", force: :cascade do |t|
-    t.boolean "presentation"
-    t.text "anounce"
-    t.text "program"
-    t.text "schedule"
-    t.text "meal"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_content_camps_on_user_id"
   end
 
   create_table "geotags", force: :cascade do |t|
