@@ -4,6 +4,11 @@ class CampsController < ApplicationController
   def index
     q = params[:user_ids].blank? ? Camp.all : Camp.where('user_id in (?)', params[:user_ids])
     @camps = current_user.is_admin? ? q : Camp.where('user_id = ?', current_user.id)
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data Camp.as_csv }
+    end
   end
 
   def autosave
