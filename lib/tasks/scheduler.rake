@@ -68,6 +68,7 @@ task :rebuild_rating => :environment do
     u.status = Status.first
     u.save
   end
+  Camp.find_each {|c| c.update_attributes(is_rated_for_finishing: 0, is_rated_for_approving: 0)}
   Camp.find_each do |c|
     finish_type_rating = RatingChangeType.find_by_name('Завершение работы с лагерем')
     if (c.is_rated_for_finishing.nil? || c.is_rated_for_finishing == 0) && (c.is_finished)
