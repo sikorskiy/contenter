@@ -62,10 +62,17 @@ task :update_rating => :environment do
 end
 
 task :rebuild_rating => :environment do
- 
+  RatingChange.destroy_all
+  User.find_each do |u|
+    u.update_attribute(:rating, 0)
+    u.status = Status.first
+    u.save
+  end
+  Camp.find_each { |c| c.update_attributes(is_rated_for_finishing: 0, is_rated_for_approving: 0) }
+
   Camp.find_each do |c|
     finish_type_rating = RatingChangeType.find_by_name('Завершение работы с лагерем')
-    if (c.is_rated_for_finishing.nil? || c.is_rated_for_finishing == ) && (c.is_finished)
+    if (c.is_rated_for_finishing.nil? || c.is_rated_for_finishing == false) && (c.is_finished)
       RatingChange.create(user: c.user, rating_change_type: finish_type_rating, camp_id: c.id, comment: "Rating for camp '#{c.name}' finishing changed")
       if c.user.rating + finish_type_rating.change > c.user.status.whole_length
         initial_status_name = c.user.status.badge.name
@@ -80,7 +87,7 @@ task :rebuild_rating => :environment do
       puts("Rating for camp #{c.name} finishing changed")
     end
 
-    if (c.is_rated_for_approving.nil? || c.is_rated_for_approving == 0) && (c.is_approved)
+    if (c.is_rated_for_approving.nil? || c.is_rated_for_approving == false) && (c.is_approved)
       c.pay_coefficient = c.user.status.pay_coefficient
       case c.iteration.text
       when 'Первая итерация исправлений'
