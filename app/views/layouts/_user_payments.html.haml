@@ -25,8 +25,10 @@
   - user.camps.where(is_rated_for_approving: 1).order(created_at: :desc).to_a.each do |c|
     .row
       .col-md-2
+        %p.small=c.id
+      .col-md-2
         %p.small=c.updated_at.strftime("%F, %T")
-      .col-md-8
+      .col-md-6
         %p.small=c.name
       .col-md-2
         %p.small=(c.pay_coefficient*100).round(2).to_s + 'р.'
