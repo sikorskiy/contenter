@@ -49,7 +49,7 @@
             = f.text_field :pd_url, class: 'form-control'
           .form-group
             %label Контент-менеджер
-            = f.collection_select :user_id, User.all.order(:name), :id, :name, {}, {class: 'js-select'}
+            = f.collection_select :user_id, User.where(is_archived: [nil,false]).order(:name), :id, :name, {}, {class: 'js-select'}
           .form-group
             %label Комментарий администратора
             = f.text_area :admin_comment, class: 'form-control', rows: '5'
