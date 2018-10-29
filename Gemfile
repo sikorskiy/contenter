@@ -44,6 +44,7 @@ gem 'select2-rails'
 gem 'bootstrap', '~> 4.0.0'
 gem 'image_processing', '~> 1.2'
 gem "aws-sdk-s3", require: false
+gem 'derailed_benchmarks', group: :development
 
 
 group :development, :test do
