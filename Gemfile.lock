@@ -182,9 +182,6 @@ GEM
     popper_js (1.14.3)
     public_suffix (3.0.2)
     puma (3.12.0)
-    puma_worker_killer (0.1.0)
-      get_process_mem (~> 0.2)
-      puma (>= 2.7, < 4)
     rack (2.0.5)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -309,7 +306,6 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   pg
   puma (~> 3.11)
-  puma_worker_killer
   rails (~> 5.2.0)
   rails-erd
   sass-rails (~> 5.0)
