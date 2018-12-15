@@ -18,9 +18,23 @@
         %li.nav-item
           - if current_user.is_admin?
             = link_to 'Выплаты', camp_payments_path, class: 'nav-link'
-        %li.nav-item
-          - if current_user.is_admin?
-            = link_to 'Download CSV', camps_path(format: :csv), class: 'nav-link'
+        - if current_user.is_admin?
+          %li.nav-item.dropdown
+            %a#downloads.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              Downloads
+            .dropdown-menu{"aria-labelledby" => "downloads"}
+              = link_to 'Download Camps CSV', camps_path(format: :csv), class: 'dropdown-item'
+              = link_to 'Организации', downloads_path(format: :csv, type: 'companies'), class: 'dropdown-item'
+              = link_to 'Смены', downloads_path(format: :csv, type: 'shifts'), class: 'dropdown-item'
+              = link_to 'Seasonship', downloads_path(format: :csv, type: 'seasonship'), class: 'dropdown-item'
+              = link_to 'Seasons', downloads_path(format: :csv, type: 'seasons'), class: 'dropdown-item'
+              = link_to 'Taggization', downloads_path(format: :csv, type: 'taggization'), class: 'dropdown-item'
+              = link_to 'Tags', downloads_path(format: :csv, type: 'geotags'), class: 'dropdown-item'
+              = link_to 'Leaders', downloads_path(format: :csv, type: 'leaders'), class: 'dropdown-item'
+              = link_to 'Reviews', downloads_path(format: :csv, type: 'reviews'), class: 'dropdown-item'
+              = link_to 'Review Roles', downloads_path(format: :csv, type: 'reviewroles'), class: 'dropdown-item'
+              = link_to 'Categorization', downloads_path(format: :csv, type: 'categorization'), class: 'dropdown-item'
+              = link_to 'Camp categories', downloads_path(format: :csv, type: 'campcategories'), class: 'dropdown-item'
     %ul.navbar-nav.ml-auto
       %li.nav-item.dropdown
         %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
