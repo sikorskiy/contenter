@@ -24,7 +24,7 @@ class Camp < ApplicationRecord
     CSV.generate do |csv|
       columns = %w(id url name facebook vk incamp_url ml_url dt_url bc_url pd_url inlearno_url created_at updated_at company_id preview program study accommodation meal security pricing adds latitude longitude starting_age finish_age foundation_year kids_in_camp kids_in_group leaders_per_group promo_day photos video_links comment schedule user_id presentation has_incamp_price group_leader_anounce)
       csv << columns.map(&:humanize)
-      Camp.where(is_approved: 0).find_each do |c|
+      Camp.find_each do |c|
         csv << c.attributes.values_at(*columns)
       end
     end
